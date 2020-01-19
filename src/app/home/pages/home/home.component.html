@@ -1,0 +1,29 @@
+<ngu-carousel
+  #homeCarousel
+  [inputs]="carouselConfig"
+  [dataSource]="carouselItems | async"
+>
+  <div *nguCarouselDef="let item" class="item">
+    <div class="tile" [style.background-image]="getUrlStyle(item.url)">
+      <div class="content-area">
+        <div class="clr-row">
+          <div class="clr-col-md-6">
+            <h4>Header</h4>
+            <h2>Title</h2>
+            <h4>Text</h4>
+            <div class="btn-group btn-primary">
+              <button [routerLink]="['/home']" class="btn first">
+                View more
+              </button>
+              <button [routerLink]="['/home']" class="btn">
+                Purchase now
+              </button>
+            </div>
+          </div>
+          <div class="clr-col-md-6"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ngu-carousel>
+

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { LandingComponent } from './pages/landing/landing.component';
+import { NguCarouselModule } from '@ngu/carousel';
 
+import { HomeRoutingModule } from './home-routing.module';
+
+import { LandingComponent } from './pages/landing/landing.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
-  declarations: [LandingComponent],
-  imports: [
-    CommonModule,
-    HomeRoutingModule
-  ]
+  declarations: [LandingComponent, HomeComponent],
+  imports: [CommonModule, HomeRoutingModule, NguCarouselModule],
 })
-export class HomeModule { }
+export class HomeModule {}

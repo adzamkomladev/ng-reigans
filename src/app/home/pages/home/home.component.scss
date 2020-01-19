@@ -1,0 +1,26 @@
+.item {
+  box-sizing: border-box;
+}
+
+.tile {
+  min-height: 54vh;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btn-group {
+    margin-top: 2vh;
+
+    .btn.first {
+      margin-right: 2vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .tile {
+    min-height: 72vh;
+  }
+}
