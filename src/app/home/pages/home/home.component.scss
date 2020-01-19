@@ -18,9 +18,40 @@
   }
 }
 
+.ad-section {
+  .clr-row {
+    width: 100%;
+    height: 6vh;
+
+    .clr-col-4 {
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      padding-top: 8px;
+
+      clr-icon {
+        margin-right: 1vw;
+      }
+    }
+
+    .clr-col-4.center {
+      background-color: gold;
+      color: white;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   /* For desktop: */
   .tile {
     min-height: 72vh;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile */
+  span {
+    display: none;
   }
 }
