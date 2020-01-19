@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  height: 100vh;
+  background-image: url('/assets/img/bg.jpg');
+  background-size: cover;
+}
+
+.base-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  div {
+    animation: fadein 1.5s ease-in;
+
+    img {
+      width: 32vh;
+    }
+
+    .btn-group {
+      .btn.first {
+        margin-right: 2vw;
+      }
+    }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

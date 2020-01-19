@@ -1,8 +1,8 @@
 <clr-main-container>
-  <div class="pre-header">
+  <div class="pre-header" *ngIf="!isLandingPage">
     <img alt="Reigans logo" src="/assets/img/reigans-logo.png" />
   </div>
-  <clr-header>
+  <clr-header *ngIf="!isLandingPage">
     <div class="branding"></div>
     <div class="header-nav" [clr-nav-level]="1">
       <a class="active nav-link" href="#">
@@ -50,7 +50,9 @@
     </div>
   </clr-header>
 
-  <div class="content-container">
-    <main class="content-area"></main>
+  <div id="content-container" class="content-container">
+    <main id="content-area" class="content-area">
+      <router-outlet></router-outlet>
+    </main>
   </div>
 </clr-main-container>
