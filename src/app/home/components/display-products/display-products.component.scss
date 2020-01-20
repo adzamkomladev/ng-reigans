@@ -1,0 +1,17 @@
+:host {
+  width: 100%;
+  margin: 24px 0;
+}
+
+.content-container {
+  margin-top: 24px;
+
+  .clr-row {
+    width: 100%;
+    margin: 0 32px;
+
+    .product {
+      margin-bottom: 32px;
+    }
+  }
+}
