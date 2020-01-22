@@ -12,7 +12,7 @@
             <h2>Title</h2>
             <h4>Text</h4>
             <div class="btn-group btn-primary">
-              <button [routerLink]="['/home']" class="btn first">
+              <button appScrollTo="app-display-products" class="btn first">
                 View more
               </button>
               <button [routerLink]="['/home']" class="btn">
@@ -44,6 +44,6 @@
 </div>
 <div class="content-container">
   <app-display-products>
-    <h2>Latest products</h2>
+    <h2 class="ai">Latest products</h2>
   </app-display-products>
 </div>
