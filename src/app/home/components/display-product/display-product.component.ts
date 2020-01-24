@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-display-product',
   templateUrl: './display-product.component.html',
-  styleUrls: ['./display-product.component.scss']
+  styleUrls: ['./display-product.component.scss'],
 })
-export class DisplayProductComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class DisplayProductComponent {
+  @Input() product: { name: string; price: number; category: string };
 }

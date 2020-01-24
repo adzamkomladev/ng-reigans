@@ -1,0 +1,13 @@
+<div class="clr-row">
+  <ul>
+    <li>
+      <button
+        (click)="onClick(category)"
+        *ngFor="let category of categories"
+        class="btn btn-primary"
+      >
+        {{ category }}
+      </button>
+    </li>
+  </ul>
+</div>

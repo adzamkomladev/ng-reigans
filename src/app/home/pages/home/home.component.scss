@@ -42,10 +42,15 @@
   }
 }
 
-h2 {
+h2.display-products-heading {
   font-weight: bolder;
   text-align: center;
   text-transform: uppercase;
+  margin: 46px 0;
+}
+
+app-filter-buttons-section {
+  margin-bottom: 46px;
 }
 
 /* Break point styles */

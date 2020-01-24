@@ -12,6 +12,7 @@ import { DisplayProductsComponent } from './components/display-products/display-
 import { DisplayProductComponent } from './components/display-product/display-product.component';
 import { ScrollToDirective } from './directives/scroll-to.directive';
 import { InViewportDirective } from './directives/in-viewport.directive';
+import { FilterButtonsSectionComponent } from './components/filter-buttons-section/filter-buttons-section.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { InViewportDirective } from './directives/in-viewport.directive';
     DisplayProductComponent,
     ScrollToDirective,
     InViewportDirective,
+    FilterButtonsSectionComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, NguCarouselModule, ClarityModule],
   providers: [{ provide: Window, useValue: window }],

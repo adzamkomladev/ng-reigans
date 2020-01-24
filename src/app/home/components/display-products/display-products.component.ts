@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
@@ -10,18 +10,22 @@ import { animateProducts } from '../../animations/display-products.animation';
   styleUrls: ['./display-products.component.scss'],
   animations: [animateProducts],
 })
-export class DisplayProductsComponent implements OnInit {
-  @Input() products;
+export class DisplayProductsComponent implements OnChanges {
+  @Input() products: { name: string; price: number; category: string }[];
 
-  productsListSubject = new BehaviorSubject([]);
+  productsListSubject = new BehaviorSubject<
+    { name: string; price: number; category: string }[]
+  >([]);
 
   get productsList() {
     return this.productsListSubject.asObservable();
   }
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.products.isFirstChange()) {
+      this.productsListSubject.next(changes.products.currentValue || []);
+    }
+  }
 
   onInViewport() {
     this.productsListSubject.next(this.products || []);
