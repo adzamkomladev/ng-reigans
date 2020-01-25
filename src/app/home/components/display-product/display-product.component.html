@@ -17,6 +17,8 @@
   </div>
 </a>
 <div class="text-container">
-  <span>Name</span>
-  <span><strong>$380</strong></span>
+  <span>{{ product.name }}</span>
+  <span
+    ><strong>{{ product.price | currency: 'USD' }}</strong></span
+  >
 </div>

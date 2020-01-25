@@ -44,20 +44,24 @@
 </div>
 <div class="content-container">
   <div>
-    <h2 class="display-products-heading">Latest products</h2>
+    <h1 class="display-products-heading">Latest products</h1>
     <app-display-products [products]="latestProducts | async">
     </app-display-products>
   </div>
 </div>
 <div class="content-container">
-  <div>
-    <h2 class="display-products-heading">Top selling products</h2>
+  <div *ngIf="topSellingProducts | async as tsp">
+    <h1 class="display-products-heading">Top selling products</h1>
     <app-filter-buttons-section
       [categories]="categories | async"
       (filterByCategory)="onFilterByCategory($event)"
     ></app-filter-buttons-section>
-    <app-display-products [products]="topSellingProducts | async">
-    </app-display-products>
-    <h3>This is not working</h3>
+    <app-display-products [products]="tsp"></app-display-products>
+    <div
+      *ngIf="tsp?.length < this.allProducts.length"
+      class="load-more-button-area"
+    >
+      <button (click)="onLoadMore()" class="btn btn-primary">Load more</button>
+    </div>
   </div>
 </div>
