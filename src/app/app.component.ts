@@ -11,6 +11,10 @@ import { tap } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   isLandingPage: boolean;
 
+  get currentYear(): number {
+    return new Date().getFullYear();
+  }
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {

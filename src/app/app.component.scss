@@ -18,3 +18,44 @@
 #content-area {
   width: 100%;
 }
+
+.footer {
+  display: block;
+  background-color: #343a40;
+  width: 100%;
+
+  .clr-row {
+    width: 100%;
+    margin: 24px 0;
+
+    .clr-col-md-6 {
+      padding: 18px 52px;
+      color: #4a545a;
+
+      h2.footer-heading {
+        font-weight: bolder;
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+      }
+    }
+
+    .social-media-section {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 18px 52px;
+      color: white;
+    }
+  }
+
+  .copyright-section {
+    color: #4a545a;
+    text-align: center;
+    padding-bottom: 18px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

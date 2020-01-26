@@ -51,8 +51,48 @@
   </clr-header>
 
   <div id="content-container" class="content-container">
-    <main id="content-area" >
+    <main id="content-area">
       <router-outlet></router-outlet>
+      <div *ngIf="!isLandingPage" class="footer">
+        <div class="clr-row">
+          <div class="clr-col-md-6">
+            <h2 class="footer-heading">About us</h2>
+            <p>
+              REIGANS is a feminine focused modest brand . Our designs are
+              locally and internationally sourced with very high quality fabrics
+              . Our unique designs are sourced to suit the contemporary modest
+              woman . We source internationally from Turkey , UAE , UK, USA ,
+              Thailand and India .We believe covering can be stylish , fun and
+              perfect .
+            </p>
+          </div>
+          <div class="clr-col-md-6">
+            <h2 class="footer-heading">Contact us</h2>
+            <p>
+              Ameria , Ofankor-North , Accra , Ghana. We love to hear from you
+              on our products , services and website . We appreciate your
+              comments and suggestions. <br />
+              📞 00233271615172 or 00233261652475 reigansklooset@gmail.com
+            </p>
+          </div>
+        </div>
+        <div class="clr-row">
+          <div class="social-media-section">
+            <clr-icon shape="home" size="32" ></clr-icon>
+            <clr-icon shape="home" size="32" ></clr-icon>
+            <clr-icon shape="home" size="32" ></clr-icon>
+            <clr-icon shape="hs" size="32" ></clr-icon>
+            <clr-icon shape="phone-handset" size="32" ></clr-icon>
+            <clr-icon shape="envlope" size="32" ></clr-icon>
+          </div>
+        </div>
+        <div class="copyright-section">
+          <p>
+            Reigans Fab &copy; {{ currentYear }} | Developed by
+            <a href="https://www.github.com/adzamkomladev">Kbee</a>
+          </p>
+        </div>
+      </div>
     </main>
   </div>
 </clr-main-container>
