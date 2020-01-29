@@ -1,0 +1,42 @@
+<div class="content-container">
+  <div class="clr-row">
+    <div class="clr-col-md-3">
+      <div class="filter-container">
+        <div class="categories">
+          <h4>Categories</h4>
+          <ul>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+            <li>Hello world</li>
+          </ul>
+        </div>
+        <div class="other-filters">
+          <h4>Refine by:</h4>
+
+          <div class="price">
+            <h5>Price</h5>
+            <div class="range">
+              <input
+                [(ngModel)]="price"
+                type="range"
+                name="price"
+                min="100"
+                max="2000"
+              />
+              <p>{{ price | currency: 'USD' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clr-col-md-9">
+      kk
+    </div>
+  </div>
+</div>

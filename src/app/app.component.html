@@ -5,10 +5,14 @@
   <clr-header *ngIf="!isLandingPage">
     <div class="branding"></div>
     <div class="header-nav" [clr-nav-level]="1">
-      <a class="active nav-link" href="#">
+      <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">
         <span class="nav-text">Home</span>
       </a>
-      <a class="nav-link" href="#">
+      <a
+        class="nav-link"
+        [routerLink]="['/products']"
+        routerLinkActive="active"
+      >
         <span class="nav-text">All Clothes</span>
       </a>
       <a class="nav-link" href="#">
@@ -78,12 +82,12 @@
         </div>
         <div class="clr-row">
           <div class="social-media-section">
-            <clr-icon shape="home" size="32" ></clr-icon>
-            <clr-icon shape="home" size="32" ></clr-icon>
-            <clr-icon shape="home" size="32" ></clr-icon>
-            <clr-icon shape="hs" size="32" ></clr-icon>
-            <clr-icon shape="phone-handset" size="32" ></clr-icon>
-            <clr-icon shape="envlope" size="32" ></clr-icon>
+            <clr-icon shape="home" size="32"></clr-icon>
+            <clr-icon shape="home" size="32"></clr-icon>
+            <clr-icon shape="home" size="32"></clr-icon>
+            <clr-icon shape="hs" size="32"></clr-icon>
+            <clr-icon shape="phone-handset" size="32"></clr-icon>
+            <clr-icon shape="envlope" size="32"></clr-icon>
           </div>
         </div>
         <div class="copyright-section">
