@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { ProductsRoutingModule } from './products-routing.module';
 
+import { SharedModule } from '../shared/shared.module';
+
 import { ProductsComponent } from './pages/products/products.component';
 
 @NgModule({
   declarations: [ProductsComponent],
-  imports: [CommonModule, ProductsRoutingModule, FormsModule],
+  imports: [CommonModule, ProductsRoutingModule, FormsModule, SharedModule],
 })
 export class ProductsModule {}

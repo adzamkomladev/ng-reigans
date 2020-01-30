@@ -11,7 +11,7 @@ import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { FilterByCategoryService } from '../../services/filter-by-category.service';
+import { FilterByCategoryService } from '../../../core/services/filter-by-category.service';
 
 @Component({
   selector: 'app-home',
