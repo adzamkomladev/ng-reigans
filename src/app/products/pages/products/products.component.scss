@@ -49,13 +49,13 @@
       margin-bottom: 18px;
     }
 
-    .price {
-      h5 {
-        text-transform: uppercase;
-        font-weight: bold;
-        margin-bottom: 12px;
-      }
+    h5 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
 
+    .price {
       .range {
         input,
         p {
@@ -85,6 +85,27 @@
           text-align: right;
           color: #343a40;
           font-weight: bold;
+        }
+      }
+    }
+
+    .size {
+      .sizes {
+        button {
+          width: 42px;
+          height: 42px;
+          background-color: white;
+          border: 2px solid #343a40;
+          border-radius: 50%;
+          color: #343a40;
+          font-weight: bolder;
+          text-align: center;
+          margin: 8px;
+
+          &:hover {
+            color: white;
+            background-color: #343a40;
+          }
         }
       }
     }

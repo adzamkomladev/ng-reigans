@@ -32,6 +32,15 @@
               <p>{{ price | currency: 'USD' }}</p>
             </div>
           </div>
+
+          <div class="size">
+            <h5>Size</h5>
+            <div class="sizes">
+              <button *ngFor="let size of sizes">
+                {{ size }}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
