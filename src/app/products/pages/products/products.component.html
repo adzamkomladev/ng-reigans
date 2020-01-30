@@ -5,15 +5,7 @@
         <div class="categories">
           <h4>Categories</h4>
           <ul>
-            <li>Hello world</li>
-            <li>Hello world</li>
-            <li>Hello world</li>
-            <li>Hello world</li>
-            <li>Hello world</li>
-            <li>Hello world</li>
-            <li>Hello world</li>
-            <li>Hello world</li>
-            <li>Hello world</li>
+            <li *ngFor="let category of categories | async">{{ category }}</li>
           </ul>
         </div>
         <div class="other-filters">
@@ -45,7 +37,9 @@
       </div>
     </div>
     <div class="clr-col-md-9">
-      kk
+      <app-display-products
+        [products]="filteredProducts | async"
+      ></app-display-products>
     </div>
   </div>
 </div>
