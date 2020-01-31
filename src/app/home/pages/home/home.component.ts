@@ -25,48 +25,118 @@ export class HomeComponent implements OnInit, AfterViewInit {
   carouselItems: Observable<{ id: number; url: string }[]>;
   categories: Observable<string[]>;
   topSellingProductsSubject: BehaviorSubject<
-    { name: string; price: number; category: string }[]
+    { name: string; price: number; category: string; sizes: number[] }[]
   >;
   latestProducts: Observable<
-    { name: string; price: number; category: string }[]
+    { name: string; price: number; category: string; sizes: number[] }[]
   >;
   topSellingProducts: Observable<
-    { name: string; price: number; category: string }[]
+    { name: string; price: number; category: string; sizes: number[] }[]
   >;
 
   allProducts = [
-    { name: 'Dakashi', price: 200, category: 'Dress' },
-    { name: 'Herbi', price: 213, category: 'Co-ord Set' },
-    { name: 'Don pre', price: 500, category: 'Three Piece Set' },
-    { name: 'Hijabi', price: 400, category: 'Gown' },
-    { name: 'Harvey', price: 222, category: 'Gown' },
-    { name: 'A Barbi', price: 324, category: 'Layers' },
-    { name: 'Rir in arari', price: 100.29, category: 'Dashiki' },
-    { name: 'Finessers', price: 89.42, category: 'Scarf' },
-    { name: 'Body amour', price: 323.99, category: 'Layers' },
-    { name: 'Improvidse', price: 250.99, category: 'Dress' },
-    { name: 'Sleeep at night', price: 504, category: 'Dashiki' },
-    { name: 'Fight for your right', price: 208, category: 'Three Piece Set' },
-    { name: 'Helli', price: 120, category: 'Two Piece Set' },
-    { name: 'Goal', price: 123, category: 'Two Piece Set' },
-    { name: 'Drink', price: 299, category: 'Co-ord Set' },
-    { name: 'Hoodie', price: 450, category: 'Dress' },
-    { name: 'Dakashi', price: 200, category: 'Dress' },
-    { name: 'Herbi', price: 213, category: 'Co-ord Set' },
-    { name: 'Don pre', price: 500, category: 'Three Piece Set' },
-    { name: 'Hijabi', price: 400, category: 'Gown' },
-    { name: 'Harvey', price: 222, category: 'Gown' },
-    { name: 'A Barbi', price: 324, category: 'Layers' },
-    { name: 'Rir in arari', price: 100.29, category: 'Dashiki' },
-    { name: 'Finessers', price: 89.42, category: 'Scarf' },
-    { name: 'Body amour', price: 323.99, category: 'Layers' },
-    { name: 'Improvidse', price: 250.99, category: 'Dress' },
-    { name: 'Sleeep at night', price: 504, category: 'Dashiki' },
-    { name: 'Fight for your right', price: 208, category: 'Three Piece Set' },
-    { name: 'Helli', price: 120, category: 'Two Piece Set' },
-    { name: 'Goal', price: 123, category: 'Two Piece Set' },
-    { name: 'Drink', price: 299, category: 'Co-ord Set' },
-    { name: 'Hoodie', price: 450, category: 'Dress' },
+    { name: 'Dakashi', price: 200, category: 'Dress', sizes: [43, 37] },
+    { name: 'Herbi', price: 213, category: 'Co-ord Set', sizes: [41, 39] },
+    {
+      name: 'Don pre',
+      price: 500,
+      category: 'Three Piece Set',
+      sizes: [40, 44],
+    },
+    { name: 'Hijabi', price: 400, category: 'Gown', sizes: [43, 36, 37] },
+    { name: 'Harvey', price: 222, category: 'Gown', sizes: [39] },
+    {
+      name: 'A Barbi',
+      price: 324,
+      category: 'Layers',
+      sizes: [43, 44, 45, 46, 38, 37],
+    },
+    {
+      name: 'Rir in arari',
+      price: 100.29,
+      category: 'Dashiki',
+      sizes: [40, 38],
+    },
+    { name: 'Finessers', price: 89.42, category: 'Scarf', sizes: [42] },
+    { name: 'Body amour', price: 323.99, category: 'Layers', sizes: [41, 34] },
+    {
+      name: 'Improvidse',
+      price: 250.99,
+      category: 'Dress',
+      sizes: [43, 44, 45, 41, 39, 36, 37],
+    },
+    {
+      name: 'Sleeep at night',
+      price: 504,
+      category: 'Dashiki',
+      sizes: [43, 44, 45, 46, 38, 37],
+    },
+    {
+      name: 'Fight for your right',
+      price: 208,
+      category: 'Three Piece Set',
+      sizes: [43, 44, 45, 37],
+    },
+    { name: 'Helli', price: 120, category: 'Two Piece Set', sizes: [38] },
+    { name: 'Goal', price: 123, category: 'Two Piece Set', sizes: [45] },
+    {
+      name: 'Drink',
+      price: 299,
+      category: 'Co-ord Set',
+      sizes: [43, 44, 45, 46, 38, 36, 41, 37],
+    },
+    {
+      name: 'Hoodie',
+      price: 450,
+      category: 'Dress',
+      sizes: [43, 44, 45, 46, 37],
+    },
+    {
+      name: 'Dakashi',
+      price: 200,
+      category: 'Dress',
+      sizes: [43, 41, 40, 40, 38, 37],
+    },
+    { name: 'Herbi', price: 213, category: 'Co-ord Set', sizes: [43, 44] },
+    {
+      name: 'Don pre',
+      price: 500,
+      category: 'Three Piece Set',
+      sizes: [36, 37],
+    },
+    { name: 'Hijabi', price: 400, category: 'Gown', sizes: [37] },
+    { name: 'Harvey', price: 222, category: 'Gown', sizes: [36] },
+    { name: 'A Barbi', price: 324, category: 'Layers', sizes: [40, 38, 39] },
+    {
+      name: 'Rir in arari',
+      price: 100.29,
+      category: 'Dashiki',
+      sizes: [41, 38, 39],
+    },
+    { name: 'Finessers', price: 89.42, category: 'Scarf', sizes: [40, 36] },
+    { name: 'Body amour', price: 323.99, category: 'Layers', sizes: [47] },
+    { name: 'Improvidse', price: 250.99, category: 'Dress', sizes: [41] },
+    {
+      name: 'Sleeep at night',
+      price: 504,
+      category: 'Dashiki',
+      sizes: [40, 42],
+    },
+    {
+      name: 'Fight for your right',
+      price: 208,
+      category: 'Three Piece Set',
+      sizes: [38, 39],
+    },
+    {
+      name: 'Helli',
+      price: 120,
+      category: 'Two Piece Set',
+      sizes: [40, 43, 39],
+    },
+    { name: 'Goal', price: 123, category: 'Two Piece Set', sizes: [37, 46] },
+    { name: 'Drink', price: 299, category: 'Co-ord Set', sizes: [40, 34, 39] },
+    { name: 'Hoodie', price: 450, category: 'Dress', sizes: [40, 35, 39] },
   ];
 
   constructor(
@@ -84,7 +154,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     };
 
     this.topSellingProductsSubject = new BehaviorSubject<
-      { name: string; price: number; category: string }[]
+      { name: string; price: number; category: string; sizes: number[] }[]
     >(this.allProducts.slice(0, 8));
   }
 

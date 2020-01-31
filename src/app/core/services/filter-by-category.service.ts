@@ -22,8 +22,15 @@ export class FilterByCategoryService {
   }
 
   filterProducts(
-    products: { name: string; price: number; category: string }[],
-  ): Observable<{ name: string; price: number; category: string }[]> {
+    products: {
+      name: string;
+      price: number;
+      category: string;
+      sizes: number[];
+    }[],
+  ): Observable<
+    { name: string; price: number; category: string; sizes: number[] }[]
+  > {
     return this.filterCategory.pipe(
       map(filterCategory =>
         filterCategory === 'ALL'

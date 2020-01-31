@@ -4,8 +4,14 @@
       <div class="filter-container">
         <div class="categories">
           <h4>Categories</h4>
-          <ul>
-            <li *ngFor="let category of categories | async">{{ category }}</li>
+          <ul *ngIf="filterCategory | async as chosenCategory">
+            <li
+              [ngClass]="{ selected: chosenCategory === category }"
+              (click)="onSelectCategory(category)"
+              *ngFor="let category of categories | async"
+            >
+              {{ category }}
+            </li>
           </ul>
         </div>
         <div class="other-filters">
@@ -15,7 +21,8 @@
             <h5>Price</h5>
             <div class="range">
               <input
-                [(ngModel)]="price"
+                [ngModel]="price"
+                (ngModelChange)="onPriceChange($event)"
                 type="range"
                 name="price"
                 min="100"
@@ -27,8 +34,12 @@
 
           <div class="size">
             <h5>Size</h5>
-            <div class="sizes">
-              <button *ngFor="let size of sizes">
+            <div *ngIf="filterSizes | async as chosenSizes" class="sizes">
+              <button
+                [ngClass]="{ selected: chosenSizes.includes(size) }"
+                (click)="onSelectSize(size)"
+                *ngFor="let size of sizes"
+              >
                 {{ size }}
               </button>
             </div>
@@ -36,10 +47,13 @@
         </div>
       </div>
     </div>
-    <div class="clr-col-md-9">
-      <app-display-products
-        [products]="filteredProducts | async"
-      ></app-display-products>
+    <div *ngIf="filteredProducts | async as products" class="clr-col-md-9">
+      <app-display-products [products]="products"></app-display-products>
+      <div *ngIf="showLoadMore(products)" class="load-more-button-area">
+        <button (click)="onLoadMore()" class="btn btn-primary">
+          Load more
+        </button>
+      </div>
     </div>
   </div>
 </div>

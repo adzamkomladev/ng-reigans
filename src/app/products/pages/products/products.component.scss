@@ -31,10 +31,7 @@
           border-radius: 50%;
         }
 
-        &:hover {
-          color: gold;
-        }
-
+        &:hover,
         &.selected {
           color: gold;
         }
@@ -102,7 +99,8 @@
           text-align: center;
           margin: 8px;
 
-          &:hover {
+          &:hover,
+          &.selected {
             color: white;
             background-color: #343a40;
           }
@@ -110,4 +108,9 @@
       }
     }
   }
+}
+
+.load-more-button-area {
+  display: flex;
+  justify-content: center;
 }
