@@ -4,28 +4,29 @@
   </div>
   <clr-header *ngIf="!isLandingPage">
     <div class="branding"></div>
-    <div class="header-nav" [clr-nav-level]="1">
+    <div
+      *ngIf="filterCategory | async as fc"
+      class="header-nav"
+      [clr-nav-level]="1"
+    >
       <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">
         <span class="nav-text">Home</span>
       </a>
       <a
         class="nav-link"
         [routerLink]="['/products']"
-        routerLinkActive="active"
+        [ngClass]="{ active: fc === 'ALL' }"
+        (click)="onNavigateToCategory('ALL')"
       >
-        <span class="nav-text">All Clothes</span>
+        <span class="nav-text">All Products</span>
       </a>
-      <a class="nav-link" href="#">
-        <span class="nav-text">Co Ord Set</span>
-      </a>
-      <a class="nav-link" href="#">
-        <span class="nav-text">Three Piece Set</span>
-      </a>
-      <a class="nav-link" href="#">
-        <span class="nav-text">Dress</span>
-      </a>
-      <a class="nav-link" href="#">
-        <span class="nav-text">Gown</span>
+      <a
+        [ngClass]="{ active: fc === category }"
+        *ngFor="let category of categories | async"
+        (click)="onNavigateToCategory(category)"
+        class="nav-link"
+      >
+        <span class="nav-text">{{ category | titlecase }}</span>
       </a>
       <a class="nav-link" href="#">
         <span class="nav-text">About us</span>

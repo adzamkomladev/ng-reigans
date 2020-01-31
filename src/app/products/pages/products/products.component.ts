@@ -161,10 +161,6 @@ export class ProductsComponent implements OnInit {
       'Dashiki',
       'Scarf',
       'Layers',
-      'Two Piece Set',
-      'Dashiki',
-      'Scarf',
-      'Layers',
     ]);
 
     this.filteredProducts = this.filteredProductsSubject.asObservable().pipe(
