@@ -5,7 +5,7 @@
     appInViewport
     (inViewport)="onInViewport()"
   >
-    <div *ngFor="let product of products" class="clr-col-md-3">
+    <div *ngFor="let product of products" [ngClass]="classObjectForRow">
       <app-display-product
         [product]="product"
         class="product"

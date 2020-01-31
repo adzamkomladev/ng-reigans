@@ -11,6 +11,7 @@ import { animateProducts } from '../../animations/display-products.animation';
   animations: [animateProducts],
 })
 export class DisplayProductsComponent implements OnChanges {
+  @Input() numberOfRows = 4;
   @Input() products: { name: string; price: number; category: string }[];
 
   productsListSubject = new BehaviorSubject<
@@ -19,6 +20,13 @@ export class DisplayProductsComponent implements OnChanges {
 
   get productsList() {
     return this.productsListSubject.asObservable();
+  }
+
+  get classObjectForRow() {
+    return {
+      'clr-col-md-3': this.numberOfRows === 4,
+      'clr-col-md-4': this.numberOfRows === 3,
+    };
   }
 
   ngOnChanges(changes: SimpleChanges): void {
