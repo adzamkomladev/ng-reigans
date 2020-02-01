@@ -15,13 +15,13 @@
       <a
         class="nav-link"
         [routerLink]="['/products']"
-        [ngClass]="{ active: fc === 'ALL' }"
+        [ngClass]="{ active: fc === 'ALL' && currentUrl === '/products' }"
         (click)="onNavigateToCategory('ALL')"
       >
         <span class="nav-text">All Products</span>
       </a>
       <a
-        [ngClass]="{ active: fc === category }"
+        [ngClass]="{ active: fc === category && currentUrl === '/products' }"
         *ngFor="let category of categories | async"
         (click)="onNavigateToCategory(category)"
         class="nav-link"

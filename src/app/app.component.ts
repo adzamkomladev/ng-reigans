@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   isLandingPage: boolean;
   categories: Observable<string[]>;
 
+  private currentUrl: string;
+
   get currentYear(): number {
     return new Date().getFullYear();
   }
@@ -46,6 +48,7 @@ export class AppComponent implements OnInit {
       .pipe(
         tap(event => {
           if (event instanceof NavigationStart) {
+            this.currentUrl = event.url;
             // Don't show header and nav-bar
             this.isLandingPage = event.url === '/';
           }
@@ -56,5 +59,9 @@ export class AppComponent implements OnInit {
 
   onNavigateToCategory(category: string): void {
     this.filterByCategoryService.setFilterCategory(category);
+
+    if (this.currentUrl !== '/products') {
+      this.router.navigate(['/products']);
+    }
   }
 }
