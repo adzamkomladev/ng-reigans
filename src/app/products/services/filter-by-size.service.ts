@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { Product } from '../../core/interfaces/product';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -25,16 +27,7 @@ export class FilterBySizeService {
     this.sizes.next(this.sizes.value.filter(s => size !== s));
   }
 
-  filterProducts(
-    products: {
-      name: string;
-      price: number;
-      sizes: number[];
-      category: string;
-    }[],
-  ): Observable<
-    { name: string; price: number; sizes: number[]; category: string }[]
-  > {
+  filterProducts(products: Product[]): Observable<Product[]> {
     return this.filterSizes.pipe(
       map(filterSizes =>
         filterSizes.length === 0

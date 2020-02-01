@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { Product } from '../interfaces/product';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -21,16 +23,7 @@ export class FilterByCategoryService {
     this.category.next(category);
   }
 
-  filterProducts(
-    products: {
-      name: string;
-      price: number;
-      category: string;
-      sizes: number[];
-    }[],
-  ): Observable<
-    { name: string; price: number; category: string; sizes: number[] }[]
-  > {
+  filterProducts(products: Product[]): Observable<Product[]> {
     return this.filterCategory.pipe(
       map(filterCategory =>
         filterCategory === 'ALL'

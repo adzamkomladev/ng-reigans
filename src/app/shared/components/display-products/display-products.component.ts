@@ -4,6 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 
 import { animateProducts } from '../../animations/display-products.animation';
 
+import { Product } from '../../../core/interfaces/product';
+
 @Component({
   selector: 'app-display-products',
   templateUrl: './display-products.component.html',
@@ -12,11 +14,9 @@ import { animateProducts } from '../../animations/display-products.animation';
 })
 export class DisplayProductsComponent implements OnChanges {
   @Input() numberOfRows = 4;
-  @Input() products: { name: string; price: number; category: string }[];
+  @Input() products: Product[];
 
-  productsListSubject = new BehaviorSubject<
-    { name: string; price: number; category: string }[]
-  >([]);
+  productsListSubject = new BehaviorSubject<Product[]>([]);
 
   get productsList() {
     return this.productsListSubject.asObservable();
