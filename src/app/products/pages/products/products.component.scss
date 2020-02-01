@@ -27,13 +27,13 @@
           width: 9px;
           height: 9px;
           margin-right: 12px;
-          border: 1px solid gold;
+          border: 1px solid darkgoldenrod;
           border-radius: 50%;
         }
 
         &:hover,
         &.selected {
-          color: gold;
+          color: darkgoldenrod;
         }
       }
     }
@@ -65,7 +65,7 @@
           -webkit-appearance: none;
           outline: none;
           border-radius: 2px;
-          background-color: gold;
+          background-color: darkgoldenrod;
 
           &::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -113,4 +113,16 @@
 .load-more-button-area {
   display: flex;
   justify-content: center;
+
+  button.btn {
+    color: #343a40;
+    border: 2px solid #343a40;
+    border-radius: 24px;
+    font-weight: bold;
+
+    &:hover {
+      color: #f8f9fa;
+      background-color: #343a40;
+    }
+  }
 }

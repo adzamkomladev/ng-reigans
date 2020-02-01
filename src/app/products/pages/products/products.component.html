@@ -50,7 +50,7 @@
     <div *ngIf="filteredProducts | async as products" class="clr-col-md-9">
       <app-display-products [numberOfRows]="3" [products]="products"></app-display-products>
       <div *ngIf="showLoadMore(products)" class="load-more-button-area">
-        <button (click)="onLoadMore()" class="btn btn-primary">
+        <button (click)="onLoadMore()" class="btn">
           Load more
         </button>
       </div>

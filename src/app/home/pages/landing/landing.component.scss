@@ -19,6 +19,18 @@
     }
 
     .btn-group {
+      .btn {
+        background-color: darkgoldenrod;
+        color: #f8f9fa;
+        border: none;
+        border-radius: 24px;
+        font-weight: bold;
+
+        &:hover {
+          color: #343a40;
+        }
+      }
+
       .btn.first {
         margin-right: 2vw;
       }

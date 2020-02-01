@@ -12,6 +12,21 @@
   .btn-group {
     margin-top: 2vh;
 
+    .btn {
+      background-color: #343a40;
+      color: #f8f9fa;
+      border: 2px solid #343a40;
+      border-radius: 32px;
+      font-weight: bold;
+
+      &:hover,
+      &.active {
+        color: #343a40;
+        background-color: #f8f9fa;
+        border: 2px solid #343a40;
+      }
+    }
+
     .btn.first {
       margin-right: 2vw;
     }
@@ -36,7 +51,7 @@
     }
 
     .clr-col-4.center {
-      background-color: gold;
+      background-color: darkgoldenrod;
       color: white;
     }
   }
@@ -56,6 +71,18 @@ app-filter-buttons-section {
 .load-more-button-area {
   display: flex;
   justify-content: center;
+
+  button.btn {
+    color: #343a40;
+    border: 2px solid #343a40;
+    border-radius: 24px;
+    font-weight: bold;
+
+    &:hover{
+      color: #f8f9fa;
+      background-color: #343a40;
+    }
+  }
 }
 
 /* Break point styles */

@@ -3,8 +3,9 @@
     <li>
       <button
         (click)="onClick(category)"
+        [ngClass]="{active: category === activeCategory}"
         *ngFor="let category of categories"
-        class="btn btn-primary"
+        class="btn"
       >
         {{ category }}
       </button>

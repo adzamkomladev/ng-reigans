@@ -15,6 +15,17 @@
     li {
       button.btn {
         margin: 8px 18px;
+        background-color: #ebebeb;
+        border: none;
+        border-radius: 31px;
+        color: #343a40;
+        font-weight: bold;
+
+        &:hover,
+        &.active {
+          color: white;
+          background-color: #343a40;
+        }
       }
     }
   }

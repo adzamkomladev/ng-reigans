@@ -10,11 +10,14 @@ export class FilterButtonsSectionComponent {
 
   @Output() filterByCategory: EventEmitter<string>;
 
+  activeCategory: string;
+
   constructor() {
     this.filterByCategory = new EventEmitter<string>();
   }
 
   onClick(category: string): void {
+    this.activeCategory = category;
     this.filterByCategory.emit(category);
   }
 }

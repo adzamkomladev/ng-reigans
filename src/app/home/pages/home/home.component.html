@@ -11,7 +11,7 @@
             <h4>Header</h4>
             <h2>Title</h2>
             <h4>Text</h4>
-            <div class="btn-group btn-primary">
+            <div class="btn-group ">
               <button appScrollTo="app-display-products" class="btn first">
                 View more
               </button>
@@ -61,7 +61,7 @@
       *ngIf="tsp?.length < this.allProducts.length"
       class="load-more-button-area"
     >
-      <button (click)="onLoadMore()" class="btn btn-primary">Load more</button>
+      <button (click)="onLoadMore()" class="btn">Load more</button>
     </div>
   </div>
 </div>
