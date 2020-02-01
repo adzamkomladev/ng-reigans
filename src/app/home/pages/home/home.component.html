@@ -58,7 +58,7 @@
     ></app-filter-buttons-section>
     <app-display-products [products]="tsp"></app-display-products>
     <div
-      *ngIf="tsp?.length < this.allProducts.length"
+      *ngIf="tsp?.length < (products | async)?.length"
       class="load-more-button-area"
     >
       <button (click)="onLoadMore()" class="btn">Load more</button>
