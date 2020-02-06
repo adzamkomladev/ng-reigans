@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 
+import { ProductService } from '../../../core/services/product.service';
 import { FilterByCategoryService } from '../../../core/services/filter-by-category.service';
 import { FilterBySizeService } from '../../services/filter-by-size.service';
 import { FilterByPriceService } from '../../services/filter-by-price.service';
 
 import { Product } from '../../../core/interfaces/product';
-import { ProductService } from '../../../core/services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -117,14 +117,7 @@ export class ProductsComponent implements OnInit {
     this.filterByPriceService.setFilterPrice(this.price);
   }
 
-  showLoadMore(
-    products: {
-      name: string;
-      price: number;
-      category: string;
-      sizes: number[];
-    }[],
-  ): boolean {
+  showLoadMore(products: Product[]): boolean {
     return (
       products.length < this.productsSubject.value.length &&
       products.length !== 0

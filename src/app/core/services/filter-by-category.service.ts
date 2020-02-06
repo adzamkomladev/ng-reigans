@@ -30,7 +30,8 @@ export class FilterByCategoryService {
           ? products
           : products.filter(
               product =>
-                product.category.toLowerCase() === filterCategory.toLowerCase(),
+                product.category.name.toLowerCase() ===
+                filterCategory.toLowerCase(),
             ),
       ),
     );

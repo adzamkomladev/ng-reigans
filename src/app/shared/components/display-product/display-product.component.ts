@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import {Product} from '../../../core/interfaces/product';
+import { Product } from '../../../core/interfaces/product';
 
 @Component({
   selector: 'app-display-product',
@@ -9,4 +9,12 @@ import {Product} from '../../../core/interfaces/product';
 })
 export class DisplayProductComponent {
   @Input() product: Product;
+
+  get displayImagePath(): string {
+    return this.product.images.find(image => image.isActive).path;
+  }
+
+  get displayImagePathStyle() {
+    return { backgroundImage: `url(${this.displayImagePath})` };
+  }
 }

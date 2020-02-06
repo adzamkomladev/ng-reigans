@@ -1,12 +1,12 @@
 <a [routerLink]="['/products', product.id]">
-  <div class="img-container">
+  <div class="img-container" [ngStyle]="displayImagePathStyle">
     <div>
-      <span class="badge">
+      <span *ngIf="product.stock > 0" class="badge">
         <strong>On sale</strong>
       </span>
     </div>
     <div class="product-links">
-      <a class="add-to-cart" href="#">
+      <a class="add-to-cart" [routerLink]="['/products', product.id]">
         <clr-icon shape="shopping-bag"></clr-icon>
         <span>Add to cart</span>
       </a>

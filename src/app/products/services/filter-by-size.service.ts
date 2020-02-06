@@ -34,7 +34,7 @@ export class FilterBySizeService {
           ? products
           : products.filter(product =>
               filterSizes.some(
-                filterSize => product.sizes.indexOf(filterSize) >= 0,
+                filterSize => product.variations.sizes.indexOf(filterSize.toString()) >= 0,
               ),
             ),
       ),
