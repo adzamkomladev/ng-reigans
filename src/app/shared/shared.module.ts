@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { ClarityModule } from '@clr/angular';
 
@@ -14,7 +15,7 @@ import { InViewportDirective } from './directives/in-viewport.directive';
     DisplayProductComponent,
     InViewportDirective,
   ],
-  imports: [CommonModule, ClarityModule],
+  imports: [CommonModule, ClarityModule, RouterModule],
   exports: [
     ClarityModule,
     DisplayProductsComponent,

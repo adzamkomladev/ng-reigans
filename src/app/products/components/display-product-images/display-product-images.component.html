@@ -1,0 +1,12 @@
+<ng-container *ngIf="images && (currentImage | async) as currentImg">
+  <img class="main-img" [src]="currentImg?.imageUrl" alt="Product image" />
+  <div class="images">
+    <div
+      [ngClass]="{ active: currentImg?.id === image.id }"
+      *ngFor="let image of images"
+      (click)="onClick(image)"
+    >
+      <img [src]="image.imageUrl" alt="Other product image" />
+    </div>
+  </div>
+</ng-container>
