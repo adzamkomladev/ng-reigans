@@ -4,34 +4,35 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Product } from '../interfaces/product';
+import { Category } from '../interfaces/category';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterByCategoryService {
-  private category: BehaviorSubject<string>;
+  private category: BehaviorSubject<Category>;
 
-  get filterCategory(): Observable<string> {
+  get filterCategory(): Observable<Category> {
     return this.category.asObservable();
   }
 
   constructor() {
-    this.category = new BehaviorSubject<string>('ALL');
+    this.category = new BehaviorSubject<Category>({ name: 'ALL' });
   }
 
-  setFilterCategory(category: string): void {
+  setFilterCategory(category: Category): void {
     this.category.next(category);
   }
 
   filterProducts(products: Product[]): Observable<Product[]> {
     return this.filterCategory.pipe(
       map(filterCategory =>
-        filterCategory === 'ALL'
+        filterCategory.name === 'ALL'
           ? products
           : products.filter(
               product =>
                 product.category.name.toLowerCase() ===
-                filterCategory.toLowerCase(),
+                filterCategory.name.toLowerCase(),
             ),
       ),
     );

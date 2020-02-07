@@ -6,11 +6,11 @@
           <h4>Categories</h4>
           <ul *ngIf="filterCategory | async as chosenCategory">
             <li
-              [ngClass]="{ selected: chosenCategory === category }"
+              [ngClass]="{ selected: chosenCategory.name === category.name }"
               (click)="onSelectCategory(category)"
               *ngFor="let category of categories | async"
             >
-              {{ category }}
+              {{ category.name }}
             </li>
           </ul>
         </div>

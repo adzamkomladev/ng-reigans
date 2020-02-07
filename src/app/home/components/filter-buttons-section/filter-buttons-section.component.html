@@ -3,11 +3,11 @@
     <li>
       <button
         (click)="onClick(category)"
-        [ngClass]="{active: category === activeCategory}"
+        [ngClass]="{ active: category.name === activeCategory?.name }"
         *ngFor="let category of categories"
         class="btn"
       >
-        {{ category }}
+        {{ category.name }}
       </button>
     </li>
   </ul>

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 
 import { ProductService } from '../../../core/services/product.service';
+import { CategoryService } from '../../../core/services/category.service';
 import { FilterByCategoryService } from '../../../core/services/filter-by-category.service';
 import { FilterBySizeService } from '../../services/filter-by-size.service';
 import { FilterByPriceService } from '../../services/filter-by-price.service';
 
 import { Product } from '../../../core/interfaces/product';
+import { Category } from '../../../core/interfaces/category';
 
 @Component({
   selector: 'app-products',
@@ -18,12 +20,12 @@ import { Product } from '../../../core/interfaces/product';
 export class ProductsComponent implements OnInit {
   price: number;
   sizes: number[];
-  categories: Observable<string[]>;
+  categories: Observable<Category[]>;
   filteredProducts: Observable<Product[]>;
   productsSubject: BehaviorSubject<Product[]>;
   filteredProductsSubject: BehaviorSubject<Product[]>;
 
-  get filterCategory(): Observable<string> {
+  get filterCategory(): Observable<Category> {
     return this.filterByCategoryService.filterCategory;
   }
 
@@ -33,6 +35,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private categoryService: CategoryService,
     private filterByCategoryService: FilterByCategoryService,
     private filterBySizeService: FilterBySizeService,
     private filterByPriceService: FilterByPriceService,
@@ -46,17 +49,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categories = of([
-      'ALL',
-      'Dress',
-      'Co-ord Set',
-      'Three Piece Set',
-      'Gown',
-      'Two Piece Set',
-      'Dashiki',
-      'Scarf',
-      'Layers',
-    ]);
+    this.categories = this.categoryService.getAll();
 
     this.productService
       .getAll()
@@ -92,7 +85,7 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  onSelectCategory(category: string): void {
+  onSelectCategory(category: Category): void {
     this.filterByCategoryService.setFilterCategory(category);
   }
 

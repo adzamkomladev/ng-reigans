@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
 
 import { FilterByCategoryService } from './core/services/filter-by-category.service';
+import { CategoryService } from './core/services/category.service';
+
+import { Category } from './core/interfaces/category';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,7 @@ import { FilterByCategoryService } from './core/services/filter-by-category.serv
 })
 export class AppComponent implements OnInit {
   isLandingPage: boolean;
-  categories: Observable<string[]>;
+  categories: Observable<Category[]>;
 
   private currentUrl: string;
 
@@ -21,28 +24,22 @@ export class AppComponent implements OnInit {
     return new Date().getFullYear();
   }
 
-  get filterCategory(): Observable<string> {
+  get filterCategory(): Observable<Category> {
     return this.filterByCategoryService.filterCategory;
   }
 
   constructor(
     private router: Router,
     private filterByCategoryService: FilterByCategoryService,
+    private categoryService: CategoryService,
   ) {}
 
   ngOnInit(): void {
-    this.categories = of([
-      'Dress',
-      'Co-ord Set',
-      'Three Piece Set',
-      'Gown',
-      'Two Piece Set',
-      'Dashiki',
-      'Scarf',
-      'Layers',
-    ]).pipe(
-      map(categories => categories.filter((category, index) => index <= 5)),
-    );
+    this.categories = this.categoryService
+      .getAll()
+      .pipe(
+        map(categories => categories.filter((category, index) => index <= 5)),
+      );
 
     this.router.events
       .pipe(
@@ -57,7 +54,7 @@ export class AppComponent implements OnInit {
       .subscribe();
   }
 
-  onNavigateToCategory(category: string): void {
+  onNavigateToCategory(category: Category): void {
     this.filterByCategoryService.setFilterCategory(category);
 
     if (this.currentUrl !== '/products') {

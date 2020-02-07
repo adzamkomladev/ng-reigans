@@ -12,9 +12,11 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { ProductService } from '../../../core/services/product.service';
+import { CategoryService } from '../../../core/services/category.service';
 import { FilterByCategoryService } from '../../../core/services/filter-by-category.service';
 
 import { Product } from '../../../core/interfaces/product';
+import { Category } from '../../../core/interfaces/category';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +28,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   carouselConfig: NguCarouselConfig;
   carouselItems: Observable<{ id: number; url: string }[]>;
-  categories: Observable<string[]>;
+  categories: Observable<Category[]>;
   latestProducts: Observable<Product[]>;
   topSellingProducts: Observable<Product[]>;
   topSellingProductsSubject: BehaviorSubject<Product[]>;
@@ -39,6 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private cdr: ChangeDetectorRef,
     private productService: ProductService,
+    private categoryService: CategoryService,
     private filterByCategoryService: FilterByCategoryService,
   ) {
     this.carouselConfig = {
@@ -62,20 +65,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       { id: 3, url: '/assets/img/c3.jpg' },
     ]);
 
-    this.categories = of([
-      'Dress',
-      'Co-ord Set',
-      'Three Piece Set',
-      'Gown',
-      'Two Piece Set',
-      'Dashiki',
-      'Scarf',
-      'Layers',
-      'Two Piece Set',
-      'Dashiki',
-      'Scarf',
-      'Layers',
-    ]);
+    this.categories = this.categoryService.getAll();
 
     this.latestProducts = this.productService.getAll().pipe(
       tap(products => {
@@ -102,12 +92,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return `url('${url}')`;
   }
 
-  onFilterByCategory(category: string): void {
+  onFilterByCategory(category: Category): void {
     this.filterByCategoryService.setFilterCategory(category);
   }
 
   onLoadMore(): void {
-    this.filterByCategoryService.setFilterCategory('ALL');
+    this.filterByCategoryService.setFilterCategory({ name: 'ALL' });
 
     this.topSellingProductsSubject.next(
       this.productsSubject.value.slice(
