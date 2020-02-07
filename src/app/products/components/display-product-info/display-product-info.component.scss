@@ -1,0 +1,159 @@
+:host {
+  display: block;
+  padding-left: 32px;
+}
+
+h3,
+h4 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+p {
+  .in-stock {
+    color: darkgoldenrod;
+    font-weight: bold;
+  }
+}
+
+.rating {
+  margin-top: 18px;
+}
+
+.title {
+  margin-right: 18px;
+}
+
+.sizes {
+  display: flex;
+  margin-top: 32px;
+
+  .size-buttons {
+    display: flex;
+
+    .size-button {
+      text-align: center;
+      width: 38px;
+      height: 38px;
+      font-weight: bold;
+      border: 2px solid #414141;
+      border-radius: 50%;
+      margin-right: 8px;
+      padding: 6px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #414141;
+        color: white;
+        animation: fadeEffect 0.4s ease-in;
+      }
+
+      &.active {
+        background-color: #414141;
+        color: white;
+        animation: fadeEffect 0.4s ease-in;
+      }
+    }
+  }
+}
+
+.quantity {
+  display: flex;
+  margin-top: 32px;
+
+  .quantity-form {
+    width: 94px;
+    height: 36px;
+    border: 1px solid #ddd;
+    padding: 0 15px;
+    border-radius: 40px;
+    float: left;
+
+    .input-control {
+      width: 15px;
+      display: block;
+      float: left;
+      line-height: 36px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 18px;
+      color: #404040;
+      background-color: transparent;
+    }
+
+    input {
+      width: 28px;
+      float: left;
+      border: none;
+      height: 36px;
+      line-height: 40px;
+      padding: 0;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+}
+
+.add-to-cart {
+  margin-top: 32px;
+
+  button {
+    background-color: darkgoldenrod;
+    color: #f8f9fa;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    min-width: 167px;
+    padding: 18px 47px 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      color: #343a40;
+    }
+  }
+}
+
+.info-accordion {
+  width: 100%;
+  margin-top: 52px;
+
+  .reviews {
+    h5 {
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+
+  clr-accordion-title {
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.social-media-icons {
+  display: flex;
+  margin-top: 32px;
+
+  a {
+    margin-right: 12px;
+  }
+}
+
+@keyframes fadeEffect {
+  0% {
+    color: #414141;
+    background-color: transparent;
+  }
+
+  100% {
+    color: white;
+    background-color: #414141;
+  }
+}

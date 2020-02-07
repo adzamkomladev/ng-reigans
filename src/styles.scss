@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Customize clr accordion
+.clr-accordion-header {
+  background-color: white;
+  border: none;
+}
+
+.clr-accordion-panel:last-child .clr-accordion-content,
+.clr-accordion-panel:last-child .clr-accordion-header {
+  border-bottom: none;
+}

@@ -1,0 +1,159 @@
+<h4>Product name</h4>
+<h3>{{ 234 | currency: 'USD' }}</h3>
+<p>
+  <span><strong>Available: </strong></span>
+  <span class="in-stock">In stock</span>
+</p>
+<div class="rating">
+  <star-rating
+    value="3"
+    totalstars="5"
+    checkedcolor="darkgoldenrod"
+    size="24px"
+    readonly="true"
+  ></star-rating>
+  <p>
+    <span>2 reviews &nbsp;&nbsp; | &nbsp;&nbsp;</span>
+    <span>Add your review</span>
+  </p>
+</div>
+<div class="sizes">
+  <div class="title">Size</div>
+  <div class="size-buttons">
+    <div class="size-button">4</div>
+    <div class="size-button">4</div>
+    <div class="size-button">4</div>
+    <div class="size-button">4</div>
+    <div class="size-button">4</div>
+  </div>
+</div>
+<div class="quantity">
+  <div class="title">Quantity</div>
+  <div class="form-control">
+    <span class="quantity-form">
+      <span class="input-control" (click)="onSubtract()">-</span>
+      <input name="quantity" type="text" [(ngModel)]="quantity" />
+      <span class="input-control" (click)="onAdd()">+</span>
+    </span>
+  </div>
+</div>
+
+<div class="add-to-cart">
+  <button>
+    Add to cart
+  </button>
+</div>
+
+<div class="info-accordion">
+  <clr-accordion>
+    <clr-accordion-panel>
+      <clr-accordion-title>Information</clr-accordion-title>
+      <clr-accordion-content *clrIfExpanded>Content 1</clr-accordion-content>
+    </clr-accordion-panel>
+
+    <clr-accordion-panel>
+      <clr-accordion-title>Reviews</clr-accordion-title>
+      <clr-accordion-content *clrIfExpanded>
+        <div class="reviews">
+          <h5>Add your review</h5>
+          <form
+            name="form"
+            role="form"
+            clrForm
+            (ngSubmit)="onSubmit()"
+            #form="ngForm"
+          >
+            <star-rating
+              (rate)="onRate($event)"
+              [value]="stars || 0"
+              totalstars="5"
+              checkedcolor="darkgoldenrod"
+              uncheckedcolor="black"
+              size="24px"
+              readonly="false"
+            ></star-rating>
+            <clr-input-container>
+              <label>Review</label>
+              <input
+                placeholder="Review"
+                clrInput
+                [(ngModel)]="review"
+                name="name"
+                required
+              />
+              <clr-control-helper>Give the product a review</clr-control-helper>
+              <clr-control-error>This field is required!</clr-control-error>
+            </clr-input-container>
+            <div class="clr-form-control">
+              <button [disabled]="form.invalid && !stars" class="btn">
+                Submit review
+              </button>
+            </div>
+          </form>
+        </div>
+      </clr-accordion-content>
+    </clr-accordion-panel>
+
+    <clr-accordion-panel>
+      <clr-accordion-title>Shipping &amp; Returns</clr-accordion-title>
+      <clr-accordion-content *clrIfExpanded>
+        <h4>EXCHANGE AND RETURN POLICY</h4>
+        <p>
+          We want you to be happy with your purchase and we apologize if it is
+          not. For whatever reason that you are not satisfied, we would be most
+          happy to provide exchanges for all items purchased from us if the
+          following conditions are met:
+        </p>
+        <strong>
+          <ul>
+            <li>
+              All items must be in their original packaging with product tag
+              intact
+            </li>
+            <li>
+              All items must be unworn, unused, unwashed, and in original
+              condition
+            </li>
+            <li>
+              Items must be returned for EXCHANGE within:
+
+              <ol>
+                <li>24hrs within Accra and Tema</li>
+                <li>48hrs for orders outside Accra</li>
+                <li>7 days for orders outside Ghana</li>
+              </ol>
+            </li>
+          </ul>
+        </strong>
+        <p>
+          If none of these conditions are met, we regret to inform that we are
+          able to process any claims for exchange or refund regardless that the
+          items have been mailed back to us. All shipping and handling cost will
+          be at the customer's expense Sales item(s) are non-exchangeable nor
+          returnable via our Online portal
+        </p>
+      </clr-accordion-content>
+    </clr-accordion-panel>
+  </clr-accordion>
+</div>
+
+<div class="social-media-icons">
+  <a>
+    <clr-icon shape="home"></clr-icon>
+  </a>
+  <a>
+    <clr-icon shape="home"></clr-icon>
+  </a>
+  <a>
+    <clr-icon shape="home"></clr-icon>
+  </a>
+  <a>
+    <clr-icon shape="home"></clr-icon>
+  </a>
+  <a>
+    <clr-icon shape="home"></clr-icon>
+  </a>
+  <a>
+    <clr-icon shape="home"></clr-icon>
+  </a>
+</div>
