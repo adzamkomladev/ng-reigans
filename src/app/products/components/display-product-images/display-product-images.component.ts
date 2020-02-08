@@ -1,11 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
-import { share, tap } from 'rxjs/operators';
 
 interface Image {
-  id: number;
-  imageUrl: string;
+  isActive?: number;
+  path?: string;
 }
 
 @Component({
@@ -13,16 +12,16 @@ interface Image {
   templateUrl: './display-product-images.component.html',
   styleUrls: ['./display-product-images.component.scss'],
 })
-export class DisplayProductImagesComponent {
+export class DisplayProductImagesComponent implements OnInit {
   @Input() images: Image[] = [
-    { id: 1, imageUrl: '/assets/img/p.jpg' },
-    { id: 2, imageUrl: '/assets/img/p.jpg' },
-    { id: 3, imageUrl: '/assets/img/p.jpg' },
-    { id: 4, imageUrl: '/assets/img/p.jpg' },
-    { id: 5, imageUrl: '/assets/img/p.jpg' },
-    { id: 6, imageUrl: '/assets/img/p.jpg' },
-    { id: 7, imageUrl: '/assets/img/p.jpg' },
-    { id: 8, imageUrl: '/assets/img/p.jpg' },
+    { isActive: 1, path: '/assets/img/p.jpg' },
+    { isActive: 0, path: '/assets/img/p.jpg' },
+    { isActive: 0, path: '/assets/img/p.jpg' },
+    { isActive: 0, path: '/assets/img/p.jpg' },
+    { isActive: 0, path: '/assets/img/p.jpg' },
+    { isActive: 0, path: '/assets/img/p.jpg' },
+    { isActive: 0, path: '/assets/img/p.jpg' },
+    { isActive: 0, path: '/assets/img/p.jpg' },
   ];
 
   currentImageSubject: BehaviorSubject<Image>;
@@ -32,10 +31,14 @@ export class DisplayProductImagesComponent {
   }
 
   constructor() {
-    this.currentImageSubject = new BehaviorSubject<{
-      imageUrl: string;
-      id: number;
-    }>({ id: 7, imageUrl: '/assets/img/p.jpg' });
+    this.currentImageSubject = new BehaviorSubject<Image>({
+      isActive: 1,
+      path: '/assets/img/p.jpg',
+    });
+  }
+
+  ngOnInit(): void {
+    this.currentImageSubject.next(this.images.find(image => image.isActive));
   }
 
   onClick(image: Image): void {

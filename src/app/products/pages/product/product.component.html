@@ -1,7 +1,11 @@
 <div class="content-container">
-  <div class="clr-row">
+  <div *ngIf="product | async as selectedProduct" class="clr-row">
     <div class="clr-col-md-6">
-      <app-display-product-images></app-display-product-images>
+      <app-display-product-images
+        [images]="
+          mergeImagesAndVideos(selectedProduct?.images, selectedProduct?.videos)
+        "
+      ></app-display-product-images>
     </div>
     <div class="clr-col-md-6">
       <app-display-product-info></app-display-product-info>

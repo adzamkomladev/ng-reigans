@@ -1,12 +1,12 @@
 <ng-container *ngIf="images && (currentImage | async) as currentImg">
-  <img class="main-img" [src]="currentImg?.imageUrl" alt="Product image" />
+  <img class="main-img" [src]="currentImg?.path" alt="Product image" />
   <div class="images">
     <div
-      [ngClass]="{ active: currentImg?.id === image.id }"
+      [ngClass]="{ active: currentImg?.path === image.path }"
       *ngFor="let image of images"
       (click)="onClick(image)"
     >
-      <img [src]="image.imageUrl" alt="Other product image" />
+      <img [src]="image.path" alt="Other product image" />
     </div>
   </div>
 </ng-container>
