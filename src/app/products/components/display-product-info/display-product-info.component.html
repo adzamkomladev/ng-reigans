@@ -6,21 +6,29 @@
 </p>
 <div class="rating">
   <star-rating
-    value="3"
+    [value]="productStarRating"
     totalstars="5"
     checkedcolor="darkgoldenrod"
     size="24px"
     readonly="true"
   ></star-rating>
   <p>
-    <span>2 reviews &nbsp;&nbsp; | &nbsp;&nbsp;</span>
+    <span>
+      {{ numberOfReviews + (numberOfReviews > 1 ? ' reviews' : ' review') }}
+      &nbsp;&nbsp; | &nbsp;&nbsp;
+    </span>
     <span>Add your review</span>
   </p>
 </div>
 <div class="sizes">
   <div class="title">Size</div>
   <div class="size-buttons">
-    <div *ngFor="let size of product.variations.sizes" class="size-button">
+    <div
+      (click)="onSelectSize(size)"
+      [ngClass]="{ active: item.size === size }"
+      *ngFor="let size of product.variations.sizes"
+      class="size-button"
+    >
       {{ size }}
     </div>
   </div>
@@ -30,14 +38,14 @@
   <div class="form-control">
     <span class="quantity-form">
       <span class="input-control" (click)="onSubtract()">-</span>
-      <input name="quantity" type="text" [(ngModel)]="quantity" />
+      <input name="quantity" type="text" [(ngModel)]="item.quantity" />
       <span class="input-control" (click)="onAdd()">+</span>
     </span>
   </div>
 </div>
 
 <div *ngIf="isThereStock" class="add-to-cart">
-  <button>
+  <button (click)="onAddToCart()">
     Add to cart
   </button>
 </div>
@@ -52,7 +60,9 @@
     </clr-accordion-panel>
 
     <clr-accordion-panel>
-      <clr-accordion-title>Reviews</clr-accordion-title>
+      <clr-accordion-title class="reviews-accordion"
+        >Reviews</clr-accordion-title
+      >
       <clr-accordion-content *clrIfExpanded>
         <div class="reviews">
           <h5>Add your review</h5>
@@ -60,12 +70,12 @@
             name="form"
             role="form"
             clrForm
-            (ngSubmit)="onSubmit()"
+            (ngSubmit)="onReview()"
             #form="ngForm"
           >
             <star-rating
               (rate)="onRate($event)"
-              [value]="stars || 0"
+              [value]="review.stars || 0"
               totalstars="5"
               checkedcolor="darkgoldenrod"
               uncheckedcolor="black"
@@ -77,7 +87,7 @@
               <input
                 placeholder="Review"
                 clrInput
-                [(ngModel)]="review"
+                [(ngModel)]="review.comment"
                 name="name"
                 required
               />
@@ -85,7 +95,7 @@
               <clr-control-error>This field is required!</clr-control-error>
             </clr-input-container>
             <div class="clr-form-control">
-              <button [disabled]="form.invalid && !stars" class="btn">
+              <button [disabled]="form.invalid && !review.stars" class="btn">
                 Submit review
               </button>
             </div>

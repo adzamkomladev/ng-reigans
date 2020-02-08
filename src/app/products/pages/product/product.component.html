@@ -8,7 +8,11 @@
       ></app-display-product-images>
     </div>
     <div class="clr-col-md-6">
-      <app-display-product-info [product]="selectedProduct"></app-display-product-info>
+      <app-display-product-info
+        (reviewProduct)="onReviewProduct($event, selectedProduct)"
+        (addItemToCart)="onAddItemToCart($event, selectedProduct)"
+        [product]="selectedProduct"
+      ></app-display-product-info>
     </div>
   </div>
 </div>

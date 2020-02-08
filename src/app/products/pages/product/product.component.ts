@@ -7,6 +7,8 @@ import { concatMap } from 'rxjs/operators';
 import { ProductService } from '../../../core/services/product.service';
 
 import { Product } from '../../../core/interfaces/product';
+import { ReviewFormData } from '../../interfaces/review-form-data';
+import { CartItemFormData } from '../../interfaces/cart-item-form-data';
 
 @Component({
   selector: 'app-product',
@@ -29,5 +31,13 @@ export class ProductComponent implements OnInit {
 
   mergeImagesAndVideos(images, videos) {
     return images.concat(videos);
+  }
+
+  onReviewProduct(reviewFormData: ReviewFormData, product: Product): void {
+    console.log({ reviewFormData });
+  }
+
+  onAddItemToCart(cartItemFormData: CartItemFormData, product: Product): void {
+    console.log({ cartItemFormData });
   }
 }

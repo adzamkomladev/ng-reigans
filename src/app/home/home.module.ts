@@ -14,12 +14,15 @@ import { FilterButtonsSectionComponent } from './components/filter-buttons-secti
 import { ScrollToDirective } from './directives/scroll-to.directive';
 
 @NgModule({
-  declarations: [
-    LandingComponent,
-    HomeComponent,
-    FilterButtonsSectionComponent,
-    ScrollToDirective,
-  ],
-  imports: [CommonModule, HomeRoutingModule, NguCarouselModule, SharedModule],
+    declarations: [
+        LandingComponent,
+        HomeComponent,
+        FilterButtonsSectionComponent,
+        ScrollToDirective,
+    ],
+    imports: [CommonModule, HomeRoutingModule, NguCarouselModule, SharedModule],
+    exports: [
+        ScrollToDirective
+    ]
 })
 export class HomeModule {}
