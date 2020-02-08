@@ -104,6 +104,22 @@
               </button>
             </div>
           </form>
+
+          <hr>
+
+          <div class="display-reviews">
+            <h5>Reviews</h5>
+            <div class="display-review" *ngFor="let review of product.reviews">
+              <p>
+                {{ review.comment }} -
+                {{ review.stars + (review.stars === 1 ? ' star' : ' stars') }}
+              </p>
+              <div>
+                <div>By - Anon.</div>
+                <div>{{ review?.createdAt | date }}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </clr-accordion-content>
     </clr-accordion-panel>
