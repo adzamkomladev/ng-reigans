@@ -45,7 +45,7 @@
 </div>
 
 <div *ngIf="isThereStock" class="add-to-cart">
-  <button (click)="onAddToCart()">
+  <button [clrLoading]="submitBtnState" (click)="onAddToCart()">
     Add to cart
   </button>
 </div>
@@ -67,15 +67,15 @@
         <div class="reviews">
           <h5>Add your review</h5>
           <form
+            [noValidate]="true"
             name="form"
             role="form"
             clrForm
             (ngSubmit)="onReview()"
-            #form="ngForm"
           >
             <star-rating
               (rate)="onRate($event)"
-              [value]="review.stars || 0"
+              [value]="review.stars"
               totalstars="5"
               checkedcolor="darkgoldenrod"
               uncheckedcolor="black"
@@ -95,7 +95,11 @@
               <clr-control-error>This field is required!</clr-control-error>
             </clr-input-container>
             <div class="clr-form-control">
-              <button [disabled]="form.invalid && !review.stars" class="btn">
+              <button
+                [clrLoading]="submitBtnState"
+                [disabled]="!review.comment || this.review.stars === 0"
+                class="btn"
+              >
                 Submit review
               </button>
             </div>

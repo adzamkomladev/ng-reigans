@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+
+import { ClrLoadingState } from '@clr/angular';
 
 import { Product } from '../../../core/interfaces/product';
 
@@ -10,12 +19,13 @@ import { CartItemFormData } from '../../interfaces/cart-item-form-data';
   templateUrl: './display-product-info.component.html',
   styleUrls: ['./display-product-info.component.scss'],
 })
-export class DisplayProductInfoComponent {
+export class DisplayProductInfoComponent implements OnChanges {
   @Input() product: Product;
 
   @Output() reviewProduct: EventEmitter<ReviewFormData>;
   @Output() addItemToCart: EventEmitter<CartItemFormData>;
 
+  submitBtnState: ClrLoadingState;
   review: ReviewFormData;
   item: CartItemFormData;
 
@@ -42,10 +52,16 @@ export class DisplayProductInfoComponent {
 
   constructor() {
     this.item = { quantity: 1, size: null };
-    this.review = { comment: '', stars: null };
+    this.review = { comment: '', stars: 0 };
 
     this.reviewProduct = new EventEmitter<ReviewFormData>();
     this.addItemToCart = new EventEmitter<CartItemFormData>();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.product.isFirstChange()) {
+      this.submitBtnState = ClrLoadingState.SUCCESS;
+    }
   }
 
   onSelectSize(size: string): void {
@@ -57,7 +73,9 @@ export class DisplayProductInfoComponent {
   }
 
   onAdd(): void {
-    ++this.item.quantity;
+    if (this.item.quantity <= this.product.stock) {
+      ++this.item.quantity;
+    }
   }
 
   onSubtract(): void {
@@ -67,16 +85,14 @@ export class DisplayProductInfoComponent {
   }
 
   onReview(): void {
-    if (!this.review.comment) {
-      return;
-    }
-
     this.reviewProduct.emit(this.review);
 
     this.review = {
       comment: '',
-      stars: null,
+      stars: 0,
     };
+
+    this.submitBtnState = ClrLoadingState.LOADING;
   }
 
   onAddToCart(): void {
@@ -90,5 +106,7 @@ export class DisplayProductInfoComponent {
       quantity: 1,
       size: null,
     };
+
+    this.submitBtnState = ClrLoadingState.LOADING;
   }
 }
