@@ -1,8 +1,8 @@
-<h4>Product name</h4>
-<h3>{{ 234 | currency: 'USD' }}</h3>
+<h4>{{ product.name }}</h4>
+<h3>{{ product.price | currency: 'USD' }}</h3>
 <p>
   <span><strong>Available: </strong></span>
-  <span class="in-stock">In stock</span>
+  <span class="in-stock">{{ isThereStock ? 'In stock' : 'None' }}</span>
 </p>
 <div class="rating">
   <star-rating
@@ -20,14 +20,12 @@
 <div class="sizes">
   <div class="title">Size</div>
   <div class="size-buttons">
-    <div class="size-button">4</div>
-    <div class="size-button">4</div>
-    <div class="size-button">4</div>
-    <div class="size-button">4</div>
-    <div class="size-button">4</div>
+    <div *ngFor="let size of product.variations.sizes" class="size-button">
+      {{ size }}
+    </div>
   </div>
 </div>
-<div class="quantity">
+<div *ngIf="isThereStock" class="quantity">
   <div class="title">Quantity</div>
   <div class="form-control">
     <span class="quantity-form">
@@ -38,7 +36,7 @@
   </div>
 </div>
 
-<div class="add-to-cart">
+<div *ngIf="isThereStock" class="add-to-cart">
   <button>
     Add to cart
   </button>
@@ -48,7 +46,9 @@
   <clr-accordion>
     <clr-accordion-panel>
       <clr-accordion-title>Information</clr-accordion-title>
-      <clr-accordion-content *clrIfExpanded>Content 1</clr-accordion-content>
+      <clr-accordion-content *clrIfExpanded>
+        {{ product.details }}
+      </clr-accordion-content>
     </clr-accordion-panel>
 
     <clr-accordion-panel>

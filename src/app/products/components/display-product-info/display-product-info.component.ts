@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Product } from '../../../core/interfaces/product';
 
 @Component({
   selector: 'app-display-product-info',
@@ -6,9 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./display-product-info.component.scss'],
 })
 export class DisplayProductInfoComponent {
+  @Input() product: Product;
+
   quantity: number;
   review: string;
   stars: number;
+
+  get isThereStock(): boolean {
+    return this.product && this.product.stock > 0;
+  }
 
   constructor() {
     this.quantity = 1;
