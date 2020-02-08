@@ -19,19 +19,23 @@
     }
 
     .btn-group {
-      .btn {
+      button {
         background-color: darkgoldenrod;
         color: #f8f9fa;
         border: none;
-        border-radius: 24px;
+        border-radius: 50px;
         font-weight: bold;
+        min-width: 167px;
+        padding: 18px 47px 14px;
+        text-transform: uppercase;
+        cursor: pointer;
 
         &:hover {
           color: #343a40;
         }
       }
 
-      .btn.first {
+      button.first {
         margin-right: 2vw;
       }
     }

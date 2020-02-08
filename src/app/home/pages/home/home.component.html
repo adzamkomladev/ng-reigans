@@ -12,10 +12,10 @@
             <h2>Title</h2>
             <h4>Text</h4>
             <div class="btn-group ">
-              <button appScrollTo="app-display-products" class="btn first">
+              <button appScrollTo="app-display-products" class="first">
                 View more
               </button>
-              <button [routerLink]="['/home']" class="btn">
+              <button [routerLink]="['/home']">
                 Purchase now
               </button>
             </div>
@@ -61,7 +61,7 @@
       *ngIf="tsp?.length < (products | async)?.length"
       class="load-more-button-area"
     >
-      <button (click)="onLoadMore()" class="btn">Load more</button>
+      <button (click)="onLoadMore()">Load more</button>
     </div>
   </div>
 </div>

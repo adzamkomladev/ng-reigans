@@ -109,20 +109,3 @@
     }
   }
 }
-
-.load-more-button-area {
-  display: flex;
-  justify-content: center;
-
-  button.btn {
-    color: #343a40;
-    border: 2px solid #343a40;
-    border-radius: 24px;
-    font-weight: bold;
-
-    &:hover {
-      color: #f8f9fa;
-      background-color: #343a40;
-    }
-  }
-}
