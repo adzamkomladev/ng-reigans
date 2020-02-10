@@ -11,6 +11,7 @@ import { Review } from '../../../core/interfaces/review';
 
 import { ReviewFormData } from '../../interfaces/review-form-data';
 import { CartItemFormData } from '../../interfaces/cart-item-form-data';
+import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -27,6 +28,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private cartService: CartService,
   ) {
     this.productSubject = new BehaviorSubject<Product>(null);
   }
@@ -56,6 +58,8 @@ export class ProductComponent implements OnInit {
   }
 
   onAddItemToCart(cartItemFormData: CartItemFormData, product: Product): void {
-    console.log({ cartItemFormData });
+    this.cartService.updateCart({ productId: product.id, ...cartItemFormData });
+
+    this.productSubject.next(this.productSubject.value);
   }
 }
