@@ -45,13 +45,15 @@
           <clr-icon shape="caret down"></clr-icon>
         </button>
         <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-          <a href="#" clrDropdownItem>
+          <a clrDropdownItem>
             Items in cart:
-            <span class="badge badge-info">5</span>
+            <span class="badge badge-info">{{
+              numberOfItemsInCart | async
+            }}</span>
           </a>
           <div class="dropdown-divider" role="separator"></div>
           <a href="#" clrDropdownItem>View cart</a>
-          <a href="#" clrDropdownItem>Clear cart</a>
+          <a (click)="onClearCart()" clrDropdownItem>Clear cart</a>
         </clr-dropdown-menu>
       </clr-dropdown>
     </div>

@@ -8,6 +8,7 @@ import { FilterByCategoryService } from './core/services/filter-by-category.serv
 import { CategoryService } from './core/services/category.service';
 
 import { Category } from './core/interfaces/category';
+import { CartService } from './core/services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,8 @@ import { Category } from './core/interfaces/category';
 export class AppComponent implements OnInit {
   isLandingPage: boolean;
   categories: Observable<Category[]>;
+  filterCategory: Observable<Category>;
+  numberOfItemsInCart: Observable<number>;
 
   private currentUrl: string;
 
@@ -24,14 +27,11 @@ export class AppComponent implements OnInit {
     return new Date().getFullYear();
   }
 
-  get filterCategory(): Observable<Category> {
-    return this.filterByCategoryService.filterCategory;
-  }
-
   constructor(
     private router: Router,
     private filterByCategoryService: FilterByCategoryService,
     private categoryService: CategoryService,
+    private cartService: CartService,
   ) {}
 
   ngOnInit(): void {
@@ -52,6 +52,12 @@ export class AppComponent implements OnInit {
         }),
       )
       .subscribe();
+
+    this.filterCategory = this.filterByCategoryService.filterCategory;
+
+    this.numberOfItemsInCart = this.cartService.cart.pipe(
+      map(cart => cart.length),
+    );
   }
 
   onNavigateToCategory(category: Category): void {
@@ -60,5 +66,9 @@ export class AppComponent implements OnInit {
     if (this.currentUrl !== '/products') {
       this.router.navigate(['/products']);
     }
+  }
+
+  onClearCart(): void {
+    this.cartService.clearCart();
   }
 }
