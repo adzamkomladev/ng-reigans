@@ -15,7 +15,6 @@ import { CartItemFormData } from '../../interfaces/cart-item-form-data';
 export class DisplayProductInfoComponent {
   @Input() product: Product;
   @Input() set submitState(value: ClrLoadingState) {
-    console.log({ value });
     this.submitBtnState = value;
   }
 
@@ -64,7 +63,7 @@ export class DisplayProductInfoComponent {
   }
 
   onAdd(): void {
-    if (this.item.quantity <= this.product.stock) {
+    if (this.item.quantity < this.product.stock) {
       ++this.item.quantity;
     }
   }

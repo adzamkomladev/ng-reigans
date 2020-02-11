@@ -72,7 +72,10 @@ export class ProductComponent implements OnInit {
   }
 
   onAddItemToCart(cartItemFormData: CartItemFormData, product: Product): void {
-    this.cartService.updateCart({ productId: product.id, ...cartItemFormData });
+    this.cartService.updateCart(
+      { productId: product.id, ...cartItemFormData },
+      product,
+    );
 
     this.submitStateSubject.next(ClrLoadingState.LOADING);
 

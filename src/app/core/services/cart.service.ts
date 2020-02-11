@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CartItem } from '../interfaces/cart-item';
+import { Product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root',
@@ -16,15 +17,32 @@ export class CartService {
     this.cartSubject = new BehaviorSubject<CartItem[]>([]);
   }
 
-  updateCart(cartItem: CartItem): void {
+  updateCart(cartItem: CartItem, product: Product): void {
     const { cartCopy, cartItemIndex } = this.getCartCopyAndCartItemIndex(
       this.cartSubject.value,
       cartItem,
     );
 
-    cartItemIndex !== -1
-      ? (cartCopy[cartItemIndex].quantity += cartItem.quantity)
-      : cartCopy.push(cartItem);
+    if (cartItemIndex !== -1) {
+      if (
+        product.stock <
+        cartCopy[cartItemIndex].quantity + cartItem.quantity
+      ) {
+        return;
+      }
+
+      cartCopy[cartItemIndex].quantity += cartItem.quantity;
+    } else {
+      const quantity = cartCopy
+        .filter(item => item.productId === cartItem.productId)
+        .reduce((totalQuantity, item) => (totalQuantity += item.quantity), 0);
+
+      if (product.stock < quantity + cartItem.quantity) {
+        return;
+      }
+
+      cartCopy.push(cartItem);
+    }
 
     this.cartSubject.next(cartCopy);
   }
