@@ -10,6 +10,7 @@
         (reviewProduct)="onReviewProduct($event, selectedProduct)"
         (addItemToCart)="onAddItemToCart($event, selectedProduct)"
         [product]="selectedProduct"
+        [submitState]="submitState | async"
       ></app-display-product-info>
     </div>
   </div>

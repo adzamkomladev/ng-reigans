@@ -19,8 +19,12 @@ import { CartItemFormData } from '../../interfaces/cart-item-form-data';
   templateUrl: './display-product-info.component.html',
   styleUrls: ['./display-product-info.component.scss'],
 })
-export class DisplayProductInfoComponent implements OnChanges {
+export class DisplayProductInfoComponent {
   @Input() product: Product;
+  @Input() set submitState(value: ClrLoadingState) {
+    console.log({value});
+    this.submitBtnState = value;
+  }
 
   @Output() reviewProduct: EventEmitter<ReviewFormData>;
   @Output() addItemToCart: EventEmitter<CartItemFormData>;
@@ -58,12 +62,6 @@ export class DisplayProductInfoComponent implements OnChanges {
     this.addItemToCart = new EventEmitter<CartItemFormData>();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!changes.product.isFirstChange()) {
-      this.submitBtnState = ClrLoadingState.SUCCESS;
-    }
-  }
-
   onSelectSize(size: string): void {
     this.item.size = size;
   }
@@ -91,8 +89,6 @@ export class DisplayProductInfoComponent implements OnChanges {
       comment: '',
       stars: 0,
     };
-
-    this.submitBtnState = ClrLoadingState.LOADING;
   }
 
   onAddToCart(): void {
@@ -106,7 +102,5 @@ export class DisplayProductInfoComponent implements OnChanges {
       quantity: 1,
       size: null,
     };
-
-    this.submitBtnState = ClrLoadingState.LOADING;
   }
 }

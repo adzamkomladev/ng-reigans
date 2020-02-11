@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { concatMap, take, tap } from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {concatMap, take, tap} from 'rxjs/operators';
 
-import { ProductService } from '../../../core/services/product.service';
+import {CartService} from '../../../core/services/cart.service';
+import {ProductService} from '../../../core/services/product.service';
 
-import { Product } from '../../../core/interfaces/product';
-import { Review } from '../../../core/interfaces/review';
-
-import { ReviewFormData } from '../../interfaces/review-form-data';
-import { CartItemFormData } from '../../interfaces/cart-item-form-data';
-import { CartService } from '../../../core/services/cart.service';
+import {Product} from '../../../core/interfaces/product';
+import {Review} from '../../../core/interfaces/review';
+import {ReviewFormData} from '../../interfaces/review-form-data';
+import {CartItemFormData} from '../../interfaces/cart-item-form-data';
+import {ClrLoadingState} from '@clr/angular';
 
 @Component({
   selector: 'app-product',
@@ -20,9 +20,14 @@ import { CartService } from '../../../core/services/cart.service';
 })
 export class ProductComponent implements OnInit {
   private productSubject: BehaviorSubject<Product>;
+  private submitStateSubject: BehaviorSubject<ClrLoadingState>;
 
   get product(): Observable<Product> {
     return this.productSubject.asObservable();
+  }
+
+  get submitState(): Observable<ClrLoadingState> {
+    return this.submitStateSubject.asObservable();
   }
 
   constructor(
@@ -31,6 +36,7 @@ export class ProductComponent implements OnInit {
     private cartService: CartService,
   ) {
     this.productSubject = new BehaviorSubject<Product>(null);
+    this.submitStateSubject = new BehaviorSubject<ClrLoadingState>(ClrLoadingState.DEFAULT);
   }
 
   ngOnInit() {
@@ -44,6 +50,8 @@ export class ProductComponent implements OnInit {
   }
 
   onReviewProduct(reviewFormData: ReviewFormData, product: Product): void {
+    this.submitStateSubject.next(ClrLoadingState.LOADING);
+
     this.productService
       .reviewProduct({
         ...reviewFormData,
@@ -52,7 +60,10 @@ export class ProductComponent implements OnInit {
       .pipe(
         take(1),
         concatMap(review => this.productService.getById(review.productId)),
-        tap(updatedProduct => this.productSubject.next(updatedProduct)),
+        tap(updatedProduct => {
+          this.productSubject.next(updatedProduct);
+          this.submitStateSubject.next(ClrLoadingState.SUCCESS);
+        }),
       )
       .subscribe();
   }
@@ -60,6 +71,10 @@ export class ProductComponent implements OnInit {
   onAddItemToCart(cartItemFormData: CartItemFormData, product: Product): void {
     this.cartService.updateCart({ productId: product.id, ...cartItemFormData });
 
-    this.productSubject.next(this.productSubject.value);
+    this.submitStateSubject.next(ClrLoadingState.LOADING);
+
+    setTimeout(() => {
+      this.submitStateSubject.next(ClrLoadingState.SUCCESS);
+    }, 800);
   }
 }
