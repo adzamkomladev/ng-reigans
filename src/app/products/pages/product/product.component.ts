@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import {BehaviorSubject, Observable} from 'rxjs';
-import {concatMap, take, tap} from 'rxjs/operators';
+import { ClrLoadingState } from '@clr/angular';
 
-import {CartService} from '../../../core/services/cart.service';
-import {ProductService} from '../../../core/services/product.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { concatMap, take, tap } from 'rxjs/operators';
 
-import {Product} from '../../../core/interfaces/product';
-import {Review} from '../../../core/interfaces/review';
-import {ReviewFormData} from '../../interfaces/review-form-data';
-import {CartItemFormData} from '../../interfaces/cart-item-form-data';
-import {ClrLoadingState} from '@clr/angular';
+import { CartService } from '../../../core/services/cart.service';
+import { ProductService } from '../../../core/services/product.service';
+
+import { Product } from '../../../core/interfaces/product';
+import { Review } from '../../../core/interfaces/review';
+import { ReviewFormData } from '../../interfaces/review-form-data';
+import { CartItemFormData } from '../../interfaces/cart-item-form-data';
 
 @Component({
   selector: 'app-product',
@@ -36,7 +37,9 @@ export class ProductComponent implements OnInit {
     private cartService: CartService,
   ) {
     this.productSubject = new BehaviorSubject<Product>(null);
-    this.submitStateSubject = new BehaviorSubject<ClrLoadingState>(ClrLoadingState.DEFAULT);
+    this.submitStateSubject = new BehaviorSubject<ClrLoadingState>(
+      ClrLoadingState.DEFAULT,
+    );
   }
 
   ngOnInit() {

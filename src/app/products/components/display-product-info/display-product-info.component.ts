@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ClrLoadingState } from '@clr/angular';
 
@@ -22,7 +15,7 @@ import { CartItemFormData } from '../../interfaces/cart-item-form-data';
 export class DisplayProductInfoComponent {
   @Input() product: Product;
   @Input() set submitState(value: ClrLoadingState) {
-    console.log({value});
+    console.log({ value });
     this.submitBtnState = value;
   }
 
