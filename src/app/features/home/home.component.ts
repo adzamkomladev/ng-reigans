@@ -11,12 +11,12 @@ import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
-import { ProductService } from '../../../core/services/product.service';
-import { CategoryService } from '../../../core/services/category.service';
-import { FilterByCategoryService } from '../../../core/services/filter-by-category.service';
+import { ProductService } from '../../core/services/product.service';
+import { CategoryService } from '../../core/services/category.service';
+import { FilterByCategoryService } from '../../core/services/filter-by-category.service';
 
-import { Product } from '../../../core/interfaces/product';
-import { Category } from '../../../core/interfaces/category';
+import { Product } from '../../core/interfaces/product';
+import { Category } from '../../core/interfaces/category';
 
 @Component({
   selector: 'app-home',

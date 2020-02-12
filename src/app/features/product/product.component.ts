@@ -6,13 +6,13 @@ import { ClrLoadingState } from '@clr/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { concatMap, take, tap } from 'rxjs/operators';
 
-import { CartService } from '../../../core/services/cart.service';
-import { ProductService } from '../../../core/services/product.service';
+import { CartService } from '../../core/services/cart.service';
+import { ProductService } from '../../core/services/product.service';
 
-import { Product } from '../../../core/interfaces/product';
-import { Review } from '../../../core/interfaces/review';
-import { ReviewFormData } from '../../interfaces/review-form-data';
-import { CartItemFormData } from '../../interfaces/cart-item-form-data';
+import { Product } from '../../core/interfaces/product';
+import { Review } from '../../core/interfaces/review';
+import { ReviewFormData } from './interfaces/review-form-data';
+import { CartItemFormData } from './interfaces/cart-item-form-data';
 
 @Component({
   selector: 'app-product',

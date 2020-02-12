@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Product } from '../../core/interfaces/product';
+import { Product } from '../../../core/interfaces/product';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class FilterBySizeService {
   private sizes: BehaviorSubject<number[]>;
 
@@ -34,7 +32,8 @@ export class FilterBySizeService {
           ? products
           : products.filter(product =>
               filterSizes.some(
-                filterSize => product.variations.sizes.indexOf(filterSize.toString()) >= 0,
+                filterSize =>
+                  product.variations.sizes.indexOf(filterSize.toString()) >= 0,
               ),
             ),
       ),

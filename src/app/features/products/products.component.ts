@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 
-import { ProductService } from '../../../core/services/product.service';
-import { CategoryService } from '../../../core/services/category.service';
-import { FilterByCategoryService } from '../../../core/services/filter-by-category.service';
-import { FilterBySizeService } from '../../services/filter-by-size.service';
-import { FilterByPriceService } from '../../services/filter-by-price.service';
+import { ProductService } from '../../core/services/product.service';
+import { CategoryService } from '../../core/services/category.service';
+import { FilterByCategoryService } from '../../core/services/filter-by-category.service';
+import { FilterBySizeService } from './services/filter-by-size.service';
+import { FilterByPriceService } from './services/filter-by-price.service';
 
-import { Product } from '../../../core/interfaces/product';
-import { Category } from '../../../core/interfaces/category';
+import { Product } from '../../core/interfaces/product';
+import { Category } from '../../core/interfaces/category';
 
 @Component({
   selector: 'app-products',

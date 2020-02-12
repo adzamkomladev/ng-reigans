@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ClrLoadingState } from '@clr/angular';
 
-import { Product } from '../../../core/interfaces/product';
+import { Product } from '../../../../core/interfaces/product';
 
 import { ReviewFormData } from '../../interfaces/review-form-data';
 import { CartItemFormData } from '../../interfaces/cart-item-form-data';

@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Product } from '../../core/interfaces/product';
+import { Product } from '../../../core/interfaces/product';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class FilterByPriceService {
   private price: BehaviorSubject<number>;
 

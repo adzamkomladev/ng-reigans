@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Category } from '../../../core/interfaces/category';
+import { Category } from '../../../../core/interfaces/category';
 
 @Component({
   selector: 'app-filter-buttons-section',
