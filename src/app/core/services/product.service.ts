@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 
@@ -27,9 +26,7 @@ export class ProductService {
   }
 
   getById(id: number): Observable<Product> {
-    return this.http
-      .get<Product>(`${this.productUrl}/${id}`)
-      .pipe(tap(product => console.log({ product })));
+    return this.http.get<Product>(`${this.productUrl}/${id}`);
   }
 
   reviewProduct(review: Review): Observable<Review> {
