@@ -13,16 +13,8 @@ interface Image {
   styleUrls: ['./display-product-images.component.scss'],
 })
 export class DisplayProductImagesComponent implements OnInit {
-  @Input() images: Image[] = [
-    { isActive: 1, path: '/assets/img/p.jpg' },
-    { isActive: 0, path: '/assets/img/p.jpg' },
-    { isActive: 0, path: '/assets/img/p.jpg' },
-    { isActive: 0, path: '/assets/img/p.jpg' },
-    { isActive: 0, path: '/assets/img/p.jpg' },
-    { isActive: 0, path: '/assets/img/p.jpg' },
-    { isActive: 0, path: '/assets/img/p.jpg' },
-    { isActive: 0, path: '/assets/img/p.jpg' },
-  ];
+  @Input() images: Image[] = [];
+  @Input() videos: Image[] = [];
 
   currentImageSubject: BehaviorSubject<Image>;
 

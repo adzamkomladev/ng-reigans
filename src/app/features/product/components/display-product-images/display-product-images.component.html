@@ -1,5 +1,15 @@
 <ng-container *ngIf="images && (currentImage | async) as currentImg">
-  <img class="main-img" [src]="currentImg?.path" alt="Product image" />
+  <img
+    *ngIf="!currentImg?.path.endsWith('.mp4')"
+    class="main-media"
+    [src]="currentImg?.path"
+    alt="Product image"
+  />
+  <div class="main-media" *ngIf="currentImg?.path.endsWith('.mp4')">
+    <video controls autoplay>
+      <source [src]="currentImg?.path" type="video/mp4" />
+    </video>
+  </div>
   <div class="images">
     <div
       [ngClass]="{ active: currentImg?.path === image.path }"
@@ -7,6 +17,17 @@
       (click)="onClick(image)"
     >
       <img [src]="image.path" alt="Other product image" />
+    </div>
+    <div
+      [ngClass]="{ active: currentImg?.path === video.path }"
+      *ngFor="let video of videos"
+      (click)="onClick(video)"
+    >
+      <img [src]="video.path" alt="Other product video" />
+      <video controls>
+        <source [src]="video.path" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 </ng-container>
