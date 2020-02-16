@@ -52,7 +52,9 @@
             }}</span>
           </a>
           <div class="dropdown-divider" role="separator"></div>
-          <a href="#" clrDropdownItem>View cart</a>
+          <a [routerLink]="['/cart']" routerLinkActive="active" clrDropdownItem
+            >View cart</a
+          >
           <a (click)="onClearCart()" clrDropdownItem>Clear cart</a>
         </clr-dropdown-menu>
       </clr-dropdown>

@@ -1,0 +1,70 @@
+<div class="container">
+  <h3>Your cart</h3>
+
+  <table>
+    <thead>
+      <th [colSpan]="2">Product</th>
+      <th>Quantity</th>
+      <th>Size</th>
+      <th>Price</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td [colSpan]="2">
+          <div class="product">
+            <img width="100" src="/assets/img/p.jpg" alt="Product image" />
+            <div>
+              <span class="product-name">The name</span><br />
+              <span>{{ 23 | currency: 'USD' }}</span
+              ><br />
+              <clr-icon shape="trash" class="is-solid" size="18"></clr-icon>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="form-control">
+            <span class="quantity-form">
+              <span class="input-control">-</span>
+              <input name="quantity" type="text" value="4" />
+              <span class="input-control">+</span>
+            </span>
+          </div>
+        </td>
+        <td>
+          40
+        </td>
+        <td>{{ 133 | currency: 'USD' }}</td>
+      </tr>
+      <tr>
+        <td [colSpan]="2">
+          <div class="product">
+            <img width="100" src="/assets/img/p.jpg" alt="Product image" />
+            <div>
+              <span class="product-name">The name</span><br />
+              <span>{{ 23 | currency: 'USD' }}</span
+              ><br />
+              <clr-icon shape="trash" class="is-solid" size="18"></clr-icon>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="form-control">
+            <span class="quantity-form">
+              <span class="input-control">-</span>
+              <input name="quantity" type="text" value="4" />
+              <span class="input-control">+</span>
+            </span>
+          </div>
+        </td>
+        <td>
+          40
+        </td>
+        <td>{{ 133 | currency: 'USD' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="total-cost">
+    <div>Total</div>
+    <div>{{ 234 | currency: 'USD' }}</div>
+  </div>
+</div>

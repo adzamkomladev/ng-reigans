@@ -1,0 +1,98 @@
+.container {
+  background-color: #f0f0f0;
+  border-radius: 24px;
+  padding: 18px;
+}
+
+h3 {
+  margin-bottom: 32px;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+
+  th {
+    padding-bottom: 18px;
+  }
+
+  tbody {
+    tr {
+      font-size: 18px;
+
+      td {
+        padding-bottom: 18px;
+      }
+      .product {
+        display: flex;
+        justify-content: left;
+
+        img {
+          margin-right: 18px;
+        }
+
+        .product-name {
+          font-weight: bold;
+        }
+
+        clr-icon {
+          cursor: pointer;
+
+          &:hover {
+            color: red;
+          }
+        }
+      }
+
+      .quantity-form {
+        width: 94px;
+        height: 36px;
+        border: 1px solid #ddd;
+        padding: 0 15px;
+        border-radius: 40px;
+        float: left;
+
+        .input-control {
+          width: 15px;
+          display: block;
+          float: left;
+          line-height: 36px;
+          cursor: pointer;
+          text-align: center;
+          font-size: 18px;
+          color: #404040;
+          background-color: white;
+        }
+
+        input {
+          width: 28px;
+          float: left;
+          border: none;
+          height: 36px;
+          line-height: 40px;
+          padding: 0;
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.total-cost {
+  display: flex;
+  justify-content: flex-end;
+  background-color: darkgoldenrod;
+  padding: 32px;
+  margin: 0 -18px -18px -18px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+
+  div {
+    margin-left: 54px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
