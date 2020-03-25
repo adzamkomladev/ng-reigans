@@ -6,3 +6,30 @@
     width: 100%;
   }
 }
+
+button {
+  color: #f8f9fa;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  min-width: 167px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 18px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transition: all 0.3s ease-in-out;
+
+  &.first {
+    background-color: darkgoldenrod;
+  }
+
+  &.second {
+    background-color: #343a40;
+  }
+
+  &:hover {
+    color: #f8f9fa;
+    box-shadow: rgba(0, 0, 0, 0.22) 0 19px 43px;
+    transform: translate3d(0px, -1px, 0px);
+  }
+}
