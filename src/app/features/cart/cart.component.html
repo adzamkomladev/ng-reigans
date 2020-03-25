@@ -1,11 +1,18 @@
 <div class="content-container">
-    <div class="clr-row">
-        <div class="clr-col-md-8">
-            <app-cart-table></app-cart-table>
-        </div>
-        <div class="clr-col-md-4">
-            <button class="btn btn-block first">Proceed to checkout</button>
-            <button class="btn btn-block second">Continue shopping</button>
-        </div>
+  <div *ngIf="cart | async as itemsCart" class="clr-row">
+    <div class="clr-col-md-8">
+      <ng-container *ngIf="itemsCart.length !== 0; else noItemsTemplate">
+        <app-cart-table [cart]="itemsCart"></app-cart-table>
+      </ng-container>
+      <ng-template #noItemsTemplate>
+        No items in cart
+      </ng-template>
     </div>
+    <div class="clr-col-md-4">
+      <button *ngIf="itemsCart.length !== 0" class="btn btn-block first">
+        Proceed to checkout
+      </button>
+      <button [routerLink]="['/products']" class="btn btn-block second">Continue shopping</button>
+    </div>
+  </div>
 </div>
