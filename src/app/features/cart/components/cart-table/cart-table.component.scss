@@ -9,76 +9,99 @@ h3 {
   font-weight: bold;
 }
 
-table {
-  width: 100%;
-  text-align: left;
+.main-table {
+  overflow-x: scroll;
 
-  th {
-    padding-bottom: 18px;
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(184, 134, 11, 0.31);
+    background-color: #f5f5f5;
   }
 
-  tbody {
-    tr {
-      font-size: 18px;
+  &::-webkit-scrollbar {
+    height: 3px;
+    background-color: #f5f5f5;
+  }
 
-      td {
-        padding-bottom: 18px;
-      }
-      .product {
-        display: flex;
-        justify-content: left;
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgoldenrod;
+    border: 1px solid rgba(191, 134, 13, 0.84);
+  }
 
-        img {
-          margin-right: 18px;
+  table {
+    width: 100%;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 32px 0;
+
+    th {
+      padding-bottom: 18px;
+    }
+
+    tbody {
+      tr {
+        font-size: 18px;
+
+        td {
+          padding-bottom: 18px;
         }
+        .product {
+          display: flex;
+          justify-content: left;
 
-        .product-name {
-          font-weight: bold;
-        }
+          img {
+            margin-right: 18px;
+          }
 
-        clr-icon {
-          cursor: pointer;
+          .product-name {
+            font-weight: bold;
+          }
 
-          &:hover {
-            color: red;
+          clr-icon {
+            cursor: pointer;
+
+            &:hover {
+              color: red;
+            }
           }
         }
-      }
 
-      .quantity-form {
-        width: 94px;
-        height: 36px;
-        border: 1px solid #ddd;
-        padding: 0 15px;
-        border-radius: 40px;
-        float: left;
-
-        .input-control {
-          width: 15px;
-          display: block;
-          float: left;
-          line-height: 36px;
-          cursor: pointer;
-          text-align: center;
-          font-size: 18px;
-          color: #404040;
-          background-color: white;
-        }
-
-        input {
-          width: 28px;
-          float: left;
-          border: none;
+        .quantity-form {
+          width: 94px;
           height: 36px;
-          line-height: 40px;
-          padding: 0;
-          font-size: 14px;
-          text-align: center;
+          border: 1px solid #ddd;
+          padding: 0 15px;
+          border-radius: 40px;
+          float: left;
+          background-color: white;
+
+          .input-control {
+            width: 15px;
+            display: block;
+            float: left;
+            line-height: 32px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            color: #404040;
+            background-color: white;
+          }
+
+          input {
+            width: 28px;
+            float: left;
+            border: none;
+            height: 32px;
+            line-height: 40px;
+            padding: 0;
+            font-size: 14px;
+            text-align: center;
+          }
         }
       }
     }
   }
 }
+
 
 .total-cost {
   display: flex;

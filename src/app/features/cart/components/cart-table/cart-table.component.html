@@ -1,14 +1,15 @@
 <div class="container">
   <h3>Your cart</h3>
 
-  <table>
-    <thead>
+  <div class="main-table">
+    <table>
+      <thead>
       <th [colSpan]="2">Product</th>
       <th>Quantity</th>
       <th>Size</th>
       <th>Price</th>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr>
         <td [colSpan]="2">
           <div class="product">
@@ -17,7 +18,7 @@
               <span class="product-name">The name</span><br />
               <span>{{ 23 | currency: 'USD' }}</span
               ><br />
-              <clr-icon shape="trash" class="is-solid" size="18"></clr-icon>
+              <clr-icon shape="trash" class="is-solid" size="24"></clr-icon>
             </div>
           </div>
         </td>
@@ -43,7 +44,7 @@
               <span class="product-name">The name</span><br />
               <span>{{ 23 | currency: 'USD' }}</span
               ><br />
-              <clr-icon shape="trash" class="is-solid" size="18"></clr-icon>
+              <clr-icon shape="trash" class="is-solid" size="24"></clr-icon>
             </div>
           </div>
         </td>
@@ -61,8 +62,9 @@
         </td>
         <td>{{ 133 | currency: 'USD' }}</td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
   <div class="total-cost">
     <div>Total</div>
     <div>{{ 234 | currency: 'USD' }}</div>
