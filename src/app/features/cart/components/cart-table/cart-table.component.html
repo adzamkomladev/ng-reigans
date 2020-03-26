@@ -30,13 +30,13 @@
           <td>
             <div class="form-control">
               <span class="quantity-form">
-                <span class="input-control">-</span>
+                <span (click)="onDecreaseQuantity(cartItem)" class="input-control">-</span>
                 <input
                   [value]="cartItem?.cartItem.quantity"
                   name="quantity"
                   type="text"
                 />
-                <span class="input-control">+</span>
+                <span (click)="onIncreaseQuantity(cartItem)" class="input-control">+</span>
               </span>
             </div>
           </td>

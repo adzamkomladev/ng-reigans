@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { CartItemExtra } from '../../interfaces/cart-item-extra';
 import { Product } from '../../../../core/interfaces/product';
@@ -10,6 +10,8 @@ import { Product } from '../../../../core/interfaces/product';
 })
 export class CartTableComponent {
   @Input() cart: CartItemExtra[];
+
+  @Output() updateCart = new EventEmitter<CartItemExtra>();
 
   get totalCost(): number {
     const cart = this.cart ? this.cart : [];
@@ -23,5 +25,29 @@ export class CartTableComponent {
 
   displayImagePath(product: Product): string {
     return product.images.find(image => image.isActive).path;
+  }
+
+  onIncreaseQuantity(cartItem: CartItemExtra): void {
+    if (cartItem.cartItem.quantity < cartItem.product.stock) {
+      const item = {
+        cartItem: { ...cartItem.cartItem },
+        product: { ...cartItem.product },
+      };
+      item.cartItem.quantity = 1;
+
+      this.updateCart.emit(item);
+    }
+  }
+
+  onDecreaseQuantity(cartItem: CartItemExtra): void {
+    if (cartItem.cartItem.quantity > 1) {
+      const item = {
+        cartItem: { ...cartItem.cartItem },
+        product: { ...cartItem.product },
+      };
+      item.cartItem.quantity = -1;
+
+      this.updateCart.emit(item);
+    }
   }
 }

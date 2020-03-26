@@ -34,4 +34,8 @@ export class CartComponent implements OnInit {
       ),
     );
   }
+
+  onUpdateCart(cartItem: CartItemExtra): void {
+    this.cartService.updateCart(cartItem.cartItem, cartItem.product);
+  }
 }
