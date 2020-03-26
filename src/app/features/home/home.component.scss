@@ -22,12 +22,16 @@
       padding: 18px 47px 14px;
       text-transform: uppercase;
       cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+      transition: all 0.3s ease-in-out;
 
       &:hover,
       &.active {
         color: #343a40;
         background-color: #f8f9fa;
         border: 2px solid #343a40;
+        box-shadow: rgba(0, 0, 0, 0.22) 0 19px 43px;
+        transform: translate3d(0px, -1px, 0px);
       }
     }
 
