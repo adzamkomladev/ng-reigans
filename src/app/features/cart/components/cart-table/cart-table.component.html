@@ -23,7 +23,7 @@
                 ><br />
                 <span>{{ cartItem?.product?.price | currency: 'USD' }}</span
                 ><br />
-                <clr-icon class="is-solid" shape="trash" size="24"></clr-icon>
+                <clr-icon (click)="onRemoveItem(cartItem)" class="is-solid" shape="trash" size="24"></clr-icon>
               </div>
             </div>
           </td>

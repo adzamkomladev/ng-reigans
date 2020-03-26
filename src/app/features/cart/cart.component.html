@@ -2,7 +2,7 @@
   <div *ngIf="cart | async as itemsCart" class="clr-row">
     <div class="clr-col-md-8">
       <ng-container *ngIf="itemsCart.length !== 0; else noItemsTemplate">
-        <app-cart-table [cart]="itemsCart" (updateCart)="onUpdateCart($event)"></app-cart-table>
+        <app-cart-table [cart]="itemsCart" (updateCart)="onUpdateCart($event)" (removeItem)="onRemoveItem($event)"></app-cart-table>
       </ng-container>
       <ng-template #noItemsTemplate>
         No items in cart

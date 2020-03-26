@@ -7,6 +7,7 @@ import { ProductService } from '../../core/services/product.service';
 import { CartService } from '../../core/services/cart.service';
 
 import { CartItemExtra } from './interfaces/cart-item-extra';
+import {CartItem} from '../../core/interfaces/cart-item';
 
 @Component({
   selector: 'app-cart',
@@ -37,5 +38,9 @@ export class CartComponent implements OnInit {
 
   onUpdateCart(cartItem: CartItemExtra): void {
     this.cartService.updateCart(cartItem.cartItem, cartItem.product);
+  }
+
+  onRemoveItem(cartItem: CartItem): void {
+    this.cartService.removeFromCart(cartItem);
   }
 }
