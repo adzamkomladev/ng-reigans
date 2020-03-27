@@ -2,17 +2,27 @@
   <div *ngIf="cart | async as itemsCart" class="clr-row">
     <div class="clr-col-md-8">
       <ng-container *ngIf="itemsCart.length !== 0; else noItemsTemplate">
-        <app-cart-table [cart]="itemsCart" (updateCart)="onUpdateCart($event)" (removeItem)="onRemoveItem($event)"></app-cart-table>
+        <app-cart-table
+          [cart]="itemsCart"
+          (updateCart)="onUpdateCart($event)"
+          (removeItem)="onRemoveItem($event)"
+        ></app-cart-table>
       </ng-container>
       <ng-template #noItemsTemplate>
         <h3>No items in cart</h3>
       </ng-template>
     </div>
     <div class="clr-col-md-4">
-      <button *ngIf="itemsCart.length !== 0" class="btn btn-block first">
+      <button
+        [routerLink]="['/check-out']"
+        *ngIf="itemsCart.length !== 0"
+        class="btn-block first"
+      >
         Proceed to checkout
       </button>
-      <button [routerLink]="['/products']" class="btn-block second">Continue shopping</button>
+      <button [routerLink]="['/products']" class="btn-block second">
+        Continue shopping
+      </button>
     </div>
   </div>
 </div>
